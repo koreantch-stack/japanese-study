@@ -1,191 +1,40 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>국어 문법 퀴즈</title>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f6ef"><title>일본어 공부방 | 매일 한 챕터</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#ffffff;--bg2:#f7f6f3;--bg3:#f0efe9;--text:#1a1a1a;--text2:#555;--text3:#999;--border:rgba(0,0,0,0.1);--border2:rgba(0,0,0,0.2);--radius:10px;--radius-lg:14px;--green:#2d7a4f;--green-bg:#edf7f1;--red:#c0392b;--red-bg:#fdf0ef;}
-@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--bg2:#222;--bg3:#2a2a2a;--text:#f0efe9;--text2:#aaa;--text3:#666;--border:rgba(255,255,255,0.1);--border2:rgba(255,255,255,0.2);--green:#4caf80;--green-bg:#1a2e23;--red:#e57373;--red-bg:#2e1a1a;}}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:2rem 1rem;}
-.app{max-width:620px;margin:0 auto;}
-.screen{display:none;}
-.screen.active{display:block;}
-
-.header{text-align:center;margin-bottom:2.5rem;}
-.logo{font-size:11px;letter-spacing:0.15em;color:var(--text3);text-transform:uppercase;margin-bottom:0.75rem;}
-.title{font-size:26px;font-weight:600;color:var(--text);margin-bottom:0.5rem;}
-.subtitle{font-size:14px;color:var(--text2);line-height:1.7;}
-
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:var(--bg2);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;}
-.info-item{text-align:center;}
-.info-num{font-size:22px;font-weight:600;color:var(--text);}
-.info-label{font-size:12px;color:var(--text3);margin-top:3px;}
-
-.start-btn{width:100%;background:var(--text);color:var(--bg);border:none;border-radius:var(--radius);padding:1rem;font-size:15px;cursor:pointer;font-family:inherit;font-weight:500;}
-.start-btn:hover{opacity:0.85;}
-
-.progress-label{font-size:12px;color:var(--text3);text-align:right;margin-bottom:6px;}
-.progress-bar{background:var(--border);border-radius:99px;height:3px;margin-bottom:2rem;overflow:hidden;}
-.progress-fill{height:100%;background:var(--text);border-radius:99px;transition:width 0.4s ease;}
-
-.q-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:2rem;margin-bottom:1.25rem;}
-.q-tag{font-size:11px;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;margin-bottom:0.75rem;}
-.q-text{font-size:17px;color:var(--text);line-height:1.6;}
-.q-sub{font-size:14px;color:var(--text2);margin-top:0.75rem;line-height:1.6;background:var(--bg2);padding:0.75rem 1rem;border-radius:var(--radius);border-left:3px solid var(--border2);}
-
-.options{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;}
-.opt-btn{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-align:left;cursor:pointer;font-size:15px;color:var(--text);line-height:1.5;transition:all 0.15s;font-family:inherit;}
-.opt-btn:hover:not(:disabled){border-color:var(--border2);background:var(--bg2);}
-.opt-btn.correct{border-color:var(--green);background:var(--green-bg);color:var(--green);}
-.opt-btn.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red);}
-.opt-btn:disabled{cursor:default;}
-
-.feedback{padding:1rem 1.25rem;border-radius:var(--radius);margin-bottom:1.25rem;font-size:14px;line-height:1.6;display:none;}
-.feedback.correct{background:var(--green-bg);color:var(--green);border:0.5px solid var(--green);}
-.feedback.wrong{background:var(--red-bg);color:var(--red);border:0.5px solid var(--red);}
-.feedback.show{display:block;}
-
-.btn-next{width:100%;background:var(--text);color:var(--bg);border:none;border-radius:var(--radius);padding:0.9rem;font-size:15px;cursor:pointer;font-family:inherit;font-weight:500;display:none;}
-.btn-next.show{display:block;}
-
-.result-header{text-align:center;margin-bottom:2rem;}
-.score-big{font-size:56px;font-weight:700;color:var(--text);}
-.score-label{font-size:15px;color:var(--text2);margin-top:4px;}
-.score-comment{font-size:14px;color:var(--text2);margin-top:0.75rem;line-height:1.6;}
-
-.result-list{margin-bottom:2rem;}
-.result-item{display:flex;align-items:flex-start;gap:12px;padding:1rem;border:0.5px solid var(--border);border-radius:var(--radius);margin-bottom:8px;background:var(--bg);}
-.result-icon{font-size:16px;flex-shrink:0;margin-top:2px;}
-.result-q{font-size:13px;color:var(--text2);line-height:1.5;}
-.result-q strong{color:var(--text);font-weight:500;}
-.restart-btn{width:100%;background:none;border:0.5px solid var(--border);border-radius:var(--radius);padding:0.85rem;font-size:14px;color:var(--text2);cursor:pointer;font-family:inherit;margin-top:0.75rem;}
-</style>
-</head>
-<body>
-<div class="app">
-
-  <div id="screen-start" class="screen active">
-    <div class="header">
-      <div class="logo">국어 문법</div>
-      <h1 class="title">국어 기초 문법 퀴즈</h1>
-      <p class="subtitle">품사, 문장 성분, 어문 규정까지<br>핵심 문법만 골라 담았습니다.</p>
-    </div>
-    <div class="info-grid">
-      <div class="info-item"><div class="info-num">15</div><div class="info-label">문항</div></div>
-      <div class="info-item"><div class="info-num">4지선다</div><div class="info-label">형식</div></div>
-      <div class="info-item"><div class="info-num">즉시</div><div class="info-label">해설</div></div>
-    </div>
-    <button class="start-btn" onclick="startQuiz()">퀴즈 시작</button>
-  </div>
-
-  <div id="screen-quiz" class="screen">
-    <div class="progress-label" id="prog-label">1 / 15</div>
-    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
-    <div class="q-card">
-      <div class="q-tag" id="q-tag"></div>
-      <div class="q-text" id="q-text"></div>
-      <div class="q-sub" id="q-sub" style="display:none"></div>
-    </div>
-    <div class="options" id="options"></div>
-    <div class="feedback" id="feedback"></div>
-    <button class="btn-next" id="btn-next" onclick="nextQ()">다음 문제 →</button>
-  </div>
-
-  <div id="screen-result" class="screen">
-    <div class="result-header">
-      <div class="score-big" id="score-big"></div>
-      <div class="score-label">15문제 중 <span id="score-correct"></span>개 정답</div>
-      <div class="score-comment" id="score-comment"></div>
-    </div>
-    <div class="result-list" id="result-list"></div>
-    <button class="start-btn" onclick="restart()">다시 풀기</button>
-    <button class="restart-btn" onclick="restart()">처음으로</button>
-  </div>
-
-</div>
+:root{--ink:#24342b;--muted:#6e7b72;--green:#3f7255;--pale:#e8f0e8;--cream:#f7f6ef;--paper:#fffef9;--line:#e5e7dd}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Noto Sans KR",sans-serif}button{font:inherit;cursor:pointer;border:0}.top{background:var(--paper);border-bottom:1px solid var(--line);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.brand{font-weight:800;font-size:19px}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:500}.pill,.tag{background:var(--pale);color:var(--green);padding:5px 10px;border-radius:99px;font-size:12px}.layout{max-width:1100px;margin:25px auto;padding:0 20px;display:grid;grid-template-columns:205px 1fr;gap:22px}.side,.panel,.hero,.stat{background:var(--paper);border:1px solid var(--line);border-radius:18px}.side{padding:12px;height:max-content;position:sticky;top:85px}.nav{display:block;width:100%;text-align:left;padding:11px 12px;background:none;border-radius:11px;color:var(--muted);margin:2px 0}.nav.active,.nav:hover{background:var(--pale);color:var(--green);font-weight:700}.hero{padding:28px;background:linear-gradient(120deg,#e7efe4,#f4f1e5);position:relative;overflow:hidden}.hero:after{content:"あ";position:absolute;right:24px;top:0;font-size:120px;color:#3f725510;font-weight:900}.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:1px}.hero h1{font-size:clamp(28px,4vw,40px);line-height:1.25;letter-spacing:-1px;margin:8px 0}.hero p,.muted{color:var(--muted)}.btn{background:var(--green);color:white;padding:10px 15px;border-radius:11px;font-weight:700}.btn.light{background:white;border:1px solid var(--line);color:var(--green)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.stat{padding:14px}.stat small{display:block;color:var(--muted)}.stat strong{font-size:24px}.section{margin:22px 0 10px;font-size:20px}.panel{padding:17px;margin-bottom:13px}.view{display:none}.view.active{display:block}.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.num{background:#f0f1e8;color:var(--green);border-radius:12px;padding:9px;font-size:12px;font-weight:800}.grow{flex:1;min-width:0}.grow b{display:block}.grow small{color:var(--muted)}.status{font-size:11px;border-radius:99px;background:#f1eee6;padding:5px 8px;white-space:nowrap}.status.done{background:#e4f2e7;color:#32724a}.status.today{background:#e4edf9;color:#3e679a}.lessonTitle{font-size:30px;line-height:1.3;margin:5px 0}.jp{font-size:18px;line-height:1.9}.translation{color:var(--muted);padding-bottom:12px;margin-bottom:12px;border-bottom:1px dashed var(--line)}.table{width:100%;border-collapse:collapse}.table td,.table th{text-align:left;padding:9px;border-bottom:1px solid var(--line)}.table th{font-size:12px;color:var(--muted)}.grammar{background:#f1f3e9;border-radius:12px;padding:13px;margin:10px 0}.option{display:block;width:100%;text-align:left;background:white;border:1px solid var(--line);border-radius:10px;padding:11px;margin:7px 0}.option.selected{background:var(--pale);border-color:var(--green)}.feedback{background:var(--pale);border-radius:10px;padding:12px;margin-top:10px}.feedback.bad{background:#fbefdf}.filter{background:white;border:1px solid var(--line);padding:7px 12px;border-radius:99px;margin:3px}.filter.active{background:var(--pale);color:var(--green)}.word{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.word small{display:block;color:var(--muted)}.bar{height:8px;background:#e9e9df;border-radius:99px;overflow:hidden}.bar div{height:100%;background:var(--green);width:0}.note{background:#f8f3e8;border-radius:12px;padding:12px;color:#786744;font-size:12px;margin-top:12px}.footer{text-align:center;color:#899188;font-size:11px;padding:20px}.mobile{display:none}
+@media(max-width:720px){.layout{display:block;margin:15px auto 80px;padding:0 12px}.side{display:none}.top{padding:11px 14px}.hero{padding:22px 18px}.hero:after{font-size:85px;right:8px}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}.stat small{font-size:11px}.panel{padding:14px}.lessonTitle{font-size:26px}.row{gap:8px}.mobile{display:flex;position:fixed;bottom:0;left:0;right:0;justify-content:space-around;background:var(--paper);border-top:1px solid var(--line);padding:7px 3px calc(7px + env(safe-area-inset-bottom));z-index:10}.mobile button{background:none;color:var(--muted);font-size:11px;padding:4px}.mobile button.active{color:var(--green);font-weight:800}}
+</style></head><body>
+<header class="top"><div class="brand">🌿 일본어 공부방<small>매일 한 챕터 · JLPT N5 → N2</small></div><span class="pill" id="datePill"></span></header>
+<div class="layout"><aside class="side"><button class="nav active" data-view="home">⌂　학습 홈</button><button class="nav" data-view="lesson">▤　오늘의 학습</button><button class="nav" data-view="archive">▦　챕터 보관함</button><button class="nav" data-view="vocab">◇　단어장</button><button class="nav" data-view="review">↻　복습 · 오답</button><button class="nav" data-view="stats">▥　학습 통계</button><div class="note">🌱 놓친 날이 있어도 괜찮아요. 오늘부터 다시 이어가면 됩니다.</div></aside>
+<main>
+<section class="view active" id="v-home"><div class="hero"><div class="eyebrow">YOUR DAILY JAPANESE</div><h1>오늘도 한 챕터,<br>차근차근 일본어.</h1><p>새로운 표현을 익히고 어제 배운 내용을 복습해요. 지나간 학습도 언제든 다시 열 수 있어요.</p><button class="btn" onclick="openLesson(3)">오늘의 학습 시작하기 →</button></div><div class="stats"><div class="stat"><small>현재 단계</small><strong>N5</strong><small>목표 JLPT N2</small></div><div class="stat"><small>완료 챕터</small><strong id="doneCount">1</strong><small>예시 3개 기준</small></div><div class="stat"><small>복습 대기</small><strong id="pendingCount">1</strong><small>미학습 · 오답</small></div></div><h2 class="section">오늘과 지난 학습</h2><div class="panel" id="homeList"></div><h2 class="section">나의 학습 원칙</h2><div class="panel"><div class="row"><div class="num">30분</div><div class="grow"><b>하루 30~40분</b><small>바쁜 날은 최소 15분</small></div></div><div class="row"><div class="num">7 : 3</div><div class="grow"><b>새 내용 70% · 복습 30%</b><small>오답은 일정 간격으로 재출제</small></div></div><div class="row"><div class="num">N5→N2</div><div class="grow"><b>실력에 맞춰 진도 조절</b><small>듣기 없이 어휘·문법·독해·문장 만들기</small></div></div></div></section>
+<section class="view" id="v-lesson"><button class="filter" onclick="show('home')">← 홈</button><p class="eyebrow" id="lMeta"></p><h1 class="lessonTitle" id="lTitle"></h1><p class="muted" id="lTopic"></p><div class="panel"><h2 class="section">STEP 1 · 이야기 읽기</h2><div id="story"></div></div><div class="panel"><h2 class="section">STEP 2 · 오늘의 단어</h2><div id="words"></div></div><div class="panel"><h2 class="section">STEP 3 · 오늘의 문법</h2><div id="grammar"></div></div><div class="panel"><h2 class="section">STEP 4 · 실력 확인</h2><b id="question"></b><div id="options"></div><button class="btn" onclick="check()">정답 확인</button><div id="feedback"></div><p style="margin-top:14px"><button class="btn" onclick="complete()">챕터 학습 완료 ✓</button></p></div></section>
+<section class="view" id="v-archive"><div class="eyebrow">STUDY HISTORY</div><h1 class="lessonTitle">챕터 보관함</h1><p class="muted">지난 학습은 사라지지 않아요. 완료한 챕터도 다시 공부할 수 있어요.</p><p><button class="filter active" data-filter="all">전체</button><button class="filter" data-filter="todo">미학습</button><button class="filter" data-filter="done">완료</button></p><div class="panel" id="archiveList"></div><p class="muted" style="font-size:12px">현재는 테스트용 예시 챕터 3개입니다. 매일 자동 생성은 아직 연결 전입니다.</p></section>
+<section class="view" id="v-vocab"><div class="eyebrow">WORD NOTE</div><h1 class="lessonTitle">나의 단어장</h1><p class="muted">아는 단어를 체크하고 암기 상태를 기록하세요.</p><div class="panel" id="vocabList"></div></section>
+<section class="view" id="v-review"><div class="eyebrow">REVIEW LOOP</div><h1 class="lessonTitle">복습 · 오답 노트</h1><p class="muted">틀린 문제와 놓친 학습을 따로 관리해요.</p><h2 class="section">다시 풀 문제</h2><div class="panel" id="wrongList"></div><h2 class="section">밀린 학습</h2><div class="panel" id="pendingList"></div></section>
+<section class="view" id="v-stats"><div class="eyebrow">YOUR PROGRESS</div><h1 class="lessonTitle">학습 통계</h1><div class="stats"><div class="stat"><small>완료율</small><strong id="rate">33%</strong></div><div class="stat"><small>단어 암기</small><strong id="knownRate">0%</strong></div><div class="stat"><small>누적 오답</small><strong id="wrongCount">0</strong></div></div><div class="panel"><div class="bar"><div id="bar"></div></div><p id="progressText" class="muted"></p><button class="btn" onclick="exportData()">학습 기록 내보내기 (.json)</button> <button class="btn light" onclick="resetData()">테스트 기록 초기화</button><p class="muted" style="font-size:12px">현재 기록은 이 브라우저에 저장됩니다. 기기 간 동기화는 아직 지원하지 않습니다.</p></div></section>
+<div class="footer">일본어 공부방 · 테스트 버전 0.2 · 학습 기록은 현재 브라우저에 저장</div></main></div>
+<nav class="mobile"><button data-view="home">⌂<br>홈</button><button data-view="lesson">▤<br>학습</button><button data-view="archive">▦<br>챕터</button><button data-view="vocab">◇<br>단어장</button><button data-view="review">↻<br>복습</button></nav>
 <script>
-const QUIZ=[
-  {tag:'품사',q:'다음 중 품사의 종류가 나머지와 다른 것은?',sub:null,opts:['매우','빨리','높이','예쁘다'],ans:3,ex:'매우, 빨리, 높이는 모두 부사입니다. 예쁘다는 형용사입니다.'},
-  {tag:'품사',q:'다음 밑줄 친 단어의 품사로 알맞은 것은?',sub:'하늘이 <u>참</u> 맑다.',opts:['명사','부사','형용사','관형사'],ans:1,ex:'참은 형용사 맑다를 꾸며주는 부사입니다.'},
-  {tag:'품사',q:'다음 중 주격 조사가 포함된 문장은?',sub:null,opts:['꽃이 핀다.','꽃 한 송이','예쁜 꽃','꽃을 꺾다'],ans:0,ex:'이, 을은 체언 뒤에 붙는 목적격 조사입니다. 꽃이 핀다에서 이가 주격 조사입니다.'},
-  {tag:'문장 성분',q:'다음 문장에서 서술어는?',sub:'민준이가 도서관에서 책을 읽는다.',opts:['민준이가','도서관에서','책을','읽는다'],ans:3,ex:'서술어는 주어의 동작, 상태, 성질을 나타내는 문장 성분입니다. 읽는다가 서술어입니다.'},
-  {tag:'문장 성분',q:'다음 중 목적어가 있는 문장은?',sub:null,opts:['하늘이 파랗다.','새가 날아간다.','나는 밥을 먹었다.','꽃이 활짝 피었다.'],ans:2,ex:'목적어는 타동사의 동작 대상으로 을/를이 붙습니다. 밥을에서 밥이 목적어입니다.'},
-  {tag:'문장 성분',q:'다음 문장에서 관형어는?',sub:'저 <u>새</u> 신발이 예쁘다.',opts:['저','새','신발이','예쁘다'],ans:1,ex:'관형어는 체언을 꾸며주는 문장 성분입니다. 새는 신발을 꾸며주는 관형어입니다.'},
-  {tag:'품사',q:'다음 중 동사와 형용사를 구별하는 기준으로 알맞은 것은?',sub:null,opts:['받침 유무','음절 수','현재형 어미 -ㄴ다/-는다 결합 여부','모음의 종류'],ans:2,ex:'동사는 현재형 어미 -ㄴ다/-는다와 결합할 수 있지만, 형용사는 결합할 수 없습니다. 예) 먹는다(동사) / 예쁜다(X, 형용사)'},
-  {tag:'어문 규정',q:'다음 중 맞춤법이 올바른 것은?',sub:null,opts:['금세','금새','어떻해','않이'],ans:0,ex:'금세가 올바른 표기입니다. 금새는 틀린 표기이며, 어떡해, 아니가 각각 올바른 표기입니다.'},
-  {tag:'어문 규정',q:'다음 중 띄어쓰기가 올바른 것은?',sub:null,opts:['나는학교에간다','책 한권을 읽었다','그것은 내것이다','그는 잘 생겼다'],ans:3,ex:'잘 생겼다는 잘(부사)과 생겼다(동사)를 띄어 씁니다. 나머지는 모두 띄어쓰기 오류가 있습니다.'},
-  {tag:'단어',q:'다음 중 합성어는?',sub:null,opts:['먹이','지우개','눈물','하늘'],ans:2,ex:'눈물은 눈+물이 결합한 합성어입니다. 먹이, 지우개는 파생어이고, 하늘은 단일어입니다.'},
-  {tag:'단어',q:'다음 중 파생어는?',sub:null,opts:['봄비','손발','지우개','돌다리'],ans:2,ex:'파생어는 어근에 접사가 붙어 만들어진 단어입니다. 지우개는 지우(어근)+개(접미사)로 이루어진 파생어입니다.'},
-  {tag:'문장',q:'다음 중 홑문장은?',sub:null,opts:['나는 학교에 가고 친구는 집에 갔다.','봄이 오면 꽃이 핀다.','그는 착하고 성실하다.','강아지가 마당에서 뛰어논다.'],ans:3,ex:'홑문장은 주어와 서술어가 한 번씩만 나오는 문장입니다. 강아지가 마당에서 뛰어논다는 주어(강아지가)+서술어(뛰어논다)로 이루어진 홑문장입니다.'},
-  {tag:'어문 규정',q:'다음 중 표준어가 아닌 것은?',sub:null,opts:['짜장면','허접쓰레기','냄비','설거지'],ans:1,ex:'허접쓰레기는 표준어가 아닙니다. 허섭스레기가 올바른 표준어입니다. 짜장면은 2011년 짜장면과 자장면 모두 표준어로 인정되었습니다.'},
-  {tag:'품사',q:'다음 밑줄 친 단어 중 품사가 다른 하나는?',sub:'① <u>셋</u>이서 밥을 먹었다. ② 사과 <u>세</u> 개를 샀다. ③ <u>세</u>번 말했잖아. ④ 우리 <u>셋</u>은 친구다.',opts:['① 셋','② 세','③ 세','④ 셋'],ans:1,ex:'②의 세는 수관형사(체언을 꾸밈)이고, ①④의 셋은 수사(체언)입니다. ③의 세도 수관형사입니다.'},
-  {tag:'문장 성분',q:'다음 문장의 문장 성분 개수로 알맞은 것은?',sub:'영희가 도서관에서 책을 읽는다.',opts:['2개','3개','4개','5개'],ans:2,ex:'영희가(주어), 도서관에서(부사어), 책을(목적어), 읽는다(서술어)로 총 4개의 문장 성분이 있습니다.'},
-];
-
-let current=0;
-let results=[];
-let answered=false;
-
-function startQuiz(){showScreen('screen-quiz');current=0;results=[];renderQ();}
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
-
-function renderQ(){
-  answered=false;
-  const q=QUIZ[current];
-  document.getElementById('prog-label').textContent=(current+1)+' / 15';
-  document.getElementById('prog-fill').style.width=((current+1)/15*100)+'%';
-  document.getElementById('q-tag').textContent=q.tag;
-  document.getElementById('q-text').innerHTML=q.q;
-  const sub=document.getElementById('q-sub');
-  if(q.sub){sub.innerHTML=q.sub;sub.style.display='block';}else{sub.style.display='none';}
-  document.getElementById('options').innerHTML=q.opts.map((o,i)=>`<button class="opt-btn" onclick="selectOpt(${i})">${o}</button>`).join('');
-  const fb=document.getElementById('feedback');
-  fb.className='feedback';
-  fb.textContent='';
-  document.getElementById('btn-next').className='btn-next';
-}
-
-function selectOpt(i){
-  if(answered)return;
-  answered=true;
-  const q=QUIZ[current];
-  const btns=document.querySelectorAll('.opt-btn');
-  btns.forEach(b=>b.disabled=true);
-  const correct=i===q.ans;
-  btns[i].classList.add(correct?'correct':'wrong');
-  if(!correct)btns[q.ans].classList.add('correct');
-  const fb=document.getElementById('feedback');
-  fb.textContent=(correct?'✓ 정답입니다! ':'✗ 틀렸습니다. ')+q.ex;
-  fb.className='feedback '+(correct?'correct':'wrong')+' show';
-  results.push({q:q.q,correct,myAns:q.opts[i],rightAns:q.opts[q.ans]});
-  document.getElementById('btn-next').className='btn-next show';
-  document.getElementById('btn-next').textContent=current===14?'결과 보기 →':'다음 문제 →';
-}
-
-function nextQ(){
-  if(current===14){showResult();return;}
-  current++;renderQ();
-}
-
-function showResult(){
-  showScreen('screen-result');
-  const correct=results.filter(r=>r.correct).length;
-  const pct=Math.round(correct/15*100);
-  document.getElementById('score-big').textContent=pct+'점';
-  document.getElementById('score-correct').textContent=correct;
-  const comments=['조금 더 공부가 필요해요. 틀린 문제를 다시 확인해보세요.','기초는 잡혔어요. 반복 학습으로 완성도를 높여보세요.','꽤 잘 알고 있네요. 약한 부분만 보완하면 됩니다.','훌륭합니다! 문법 개념이 탄탄하게 잡혀 있어요.','완벽합니다! 국어 문법 마스터네요.'];
-  const idx=pct<40?0:pct<60?1:pct<80?2:pct<100?3:4;
-  document.getElementById('score-comment').textContent=comments[idx];
-  document.getElementById('result-list').innerHTML=results.map((r,i)=>`
-    <div class="result-item">
-      <div class="result-icon">${r.correct?'✓':'✗'}</div>
-      <div class="result-q"><strong>Q${i+1}. ${r.q}</strong><br>${r.correct?'정답: '+r.rightAns:'내 답: '+r.myAns+' / 정답: '+r.rightAns}</div>
-    </div>`).join('');
-}
-
-function restart(){current=0;results=[];showScreen('screen-start');}
-</script>
-</body>
-</html>
+const lessons=[
+{id:1,date:"2026-10-22",title:"아침의 커피",topic:"일상 · 음식",status:"done",story:[["毎朝（まいあさ）、水（みず）を飲（の）みます。","매일 아침, 물을 마십니다."],["それから、パンを食（た）べます。","그 다음에, 빵을 먹습니다."],["今日（きょう）は喫茶店（きっさてん）でコーヒーを飲（の）みます。","오늘은 찻집에서 커피를 마십니다."],["コーヒーは少（すこ）し熱（あつ）いです。","커피는 조금 뜨겁습니다."],["でも、とてもおいしいです。","하지만, 매우 맛있습니다."]],words:[["毎朝","まいあさ","매일 아침"],["水","みず","물"],["食べます","たべます","먹습니다"],["喫茶店","きっさてん","찻집"],["熱い","あつい","뜨겁다"],["おいしい","おいしい","맛있다"]],grammar:[["それから","그 다음에","행동이나 사건을 순서대로 이어 줍니다.","パンを食べます。それから、コーヒーを飲みます。","빵을 먹습니다. 그 다음에 커피를 마십니다."]],q:"「물」의 일본어는?",opts:["みず","みせ","みみ"],ans:0,exp:"水（みず）는 물이라는 뜻입니다."},
+{id:2,date:"2026-10-23",title:"도서관에서",topic:"장소 · 공부",status:"todo",story:[["今日（きょう）は図書館（としょかん）に行（い）きます。","오늘은 도서관에 갑니다."],["図書館（としょかん）で日本語（にほんご）を勉強（べんきょう）します。","도서관에서 일본어를 공부합니다."],["新（あたら）しい本（ほん）を読（よ）みます。","새로운 책을 읽습니다."],["少（すこ）し難（むずか）しいですが、おもしろいです。","조금 어렵지만, 재미있습니다."],["明日（あした）も勉強（べんきょう）します。","내일도 공부합니다."]],words:[["図書館","としょかん","도서관"],["日本語","にほんご","일본어"],["勉強します","べんきょうします","공부합니다"],["新しい","あたらしい","새롭다"],["本","ほん","책"],["難しい","むずかしい","어렵다"],["明日","あした","내일"]],grammar:[["장소 + で","장소에서","행동이 이루어지는 장소에는 で를 사용합니다.","図書館で本を読みます。","도서관에서 책을 읽습니다."],["～ですが","~이지만","앞 문장과 뒤 문장을 부드럽게 이어 줍니다.","難しいですが、おもしろいです。","어렵지만, 재미있습니다."]],q:"「도서관에서 공부합니다」에 알맞은 조사는?",opts:["に","で","を"],ans:1,exp:"행동이 이루어지는 장소이므로 図書館で勉強します라고 합니다."},
+{id:3,date:"2026-10-24",title:"오늘의 작은 여행",topic:"일상 · 장소 · 이동",status:"today",story:[["今日（きょう）は友達（ともだち）と公園（こうえん）に行（い）きます。","오늘은 친구와 공원에 갑니다."],["公園（こうえん）で写真（しゃしん）を撮（と）ります。","공원에서 사진을 찍습니다."],["そのあと、喫茶店（きっさてん）でコーヒーを飲（の）みます。","그 후, 찻집에서 커피를 마십니다."],["友達（ともだち）はケーキを食（た）べます。","친구는 케이크를 먹습니다."],["今日（きょう）はとても楽（たの）しいです。","오늘은 매우 즐겁습니다."]],words:[["今日","きょう","오늘"],["友達","ともだち","친구"],["公園","こうえん","공원"],["写真","しゃしん","사진"],["撮ります","とります","찍습니다"],["そのあと","そのあと","그 후"],["楽しい","たのしい","즐겁다"]],grammar:[["장소 + に行きます","~에 갑니다","이동 목적지를 나타내는 장소 뒤에 に를 사용합니다.","公園に行きます。","공원에 갑니다."],["장소 + で","장소에서","행동이 이루어지는 장소를 나타냅니다.","公園で写真を撮ります。","공원에서 사진을 찍습니다."]],q:"公園（こうえん）（　）行（い）きます。",opts:["で","に","を"],ans:1,exp:"行きます는 이동 목적지를 나타내므로 に를 사용합니다."}];
+const KEY="jpStudyPoomsaV1";let state;try{state=JSON.parse(localStorage.getItem(KEY))||{done:[1],known:[],wrong:[],quiz:{}}}catch(e){state={done:[1],known:[],wrong:[],quiz:{}}}let current=3,answer=null,checked=false,filter="all";
+function persist(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}function done(l){return state.done.includes(l.id)}function show(v){document.querySelectorAll(".view").forEach(e=>e.classList.toggle("active",e.id==="v-"+v));document.querySelectorAll("[data-view]").forEach(e=>e.classList.toggle("active",e.dataset.view===v));renderAll();window.scrollTo({top:0,behavior:"smooth"})}document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>show(b.dataset.view));
+function row(l){return '<div class="row"><div class="num">CH.'+String(l.id).padStart(3,"0")+'</div><div class="grow"><b>'+l.title+'</b><small>'+l.date+' · '+l.topic+'</small></div><span class="status '+(done(l)?"done":l.id===3?"today":"")+'">'+(done(l)?"완료":l.id===3?"오늘":"미학습")+'</span><button class="btn light" onclick="openLesson('+l.id+')">열기</button></div>'}
+function openLesson(id){current=id;answer=null;checked=false;const l=lessons.find(x=>x.id===id);document.getElementById("lMeta").textContent="JLPT N5 · CHAPTER "+String(id).padStart(3,"0")+" · "+l.date;document.getElementById("lTitle").textContent=l.title;document.getElementById("lTopic").textContent="주제: "+l.topic;document.getElementById("story").innerHTML=l.story.map(s=>'<div class="jp">'+s[0]+'</div><div class="translation">'+s[1]+'</div>').join("");document.getElementById("words").innerHTML='<table class="table"><tr><th>단어</th><th>읽기</th><th>뜻</th></tr>'+l.words.map(w=>'<tr><td><b>'+w[0]+'</b></td><td>'+w[1]+'</td><td>'+w[2]+'</td></tr>').join("")+'</table>';document.getElementById("grammar").innerHTML=l.grammar.map(g=>'<div class="grammar"><b>'+g[0]+' · '+g[1]+'</b><p class="muted">'+g[2]+'</p><div>'+g[3]+'</div><small>'+g[4]+'</small></div>').join("");document.getElementById("question").textContent=l.q;document.getElementById("options").innerHTML=l.opts.map((o,i)=>'<button class="option" onclick="pick('+i+',this)">'+["①","②","③"][i]+'　'+o+'</button>').join("");document.getElementById("feedback").innerHTML="";show("lesson")}
+function pick(i,el){answer=i;document.querySelectorAll(".option").forEach(b=>b.classList.remove("selected"));el.classList.add("selected");checked=false}
+function check(){const l=lessons.find(x=>x.id===current);if(answer===null){document.getElementById("feedback").innerHTML='<div class="feedback bad">먼저 답을 선택해 주세요.</div>';return}checked=true;const ok=answer===l.ans;state.quiz[current]=ok;if(ok)state.wrong=state.wrong.filter(x=>x!==current);else if(!state.wrong.includes(current))state.wrong.push(current);persist();document.getElementById("feedback").innerHTML='<div class="feedback '+(ok?"":"bad")+'"><b>'+(ok?"정답입니다!":"다시 살펴보세요.")+'</b><br>'+l.exp+'</div>'}
+function complete(){if(!state.done.includes(current))state.done.push(current);state.wrong=state.wrong.filter(x=>x!==current);persist();alert("학습 완료를 기록했어요!")}
+function renderArchive(){document.getElementById("archiveList").innerHTML=lessons.filter(l=>filter==="all"||(filter==="done"?done(l):!done(l))).map(row).join("")||"해당하는 챕터가 없습니다."}
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));renderArchive()});
+function renderVocab(){document.getElementById("vocabList").innerHTML=lessons.flatMap(l=>l.words.map(w=>({l,w,key:l.id+"-"+w[0]}))).map(o=>'<div class="word"><div><b>'+o.w[0]+'</b>　<span class="muted">'+o.w[1]+'</span><small>'+o.w[2]+' · CH.'+String(o.l.id).padStart(3,"0")+'</small></div><button class="btn '+(state.known.includes(o.key)?"":"light")+'" onclick="toggleKnown(\''+o.key+'\')">'+(state.known.includes(o.key)?"암기 완료 ✓":"외웠어요")+'</button></div>').join("")}
+function toggleKnown(k){state.known=state.known.includes(k)?state.known.filter(x=>x!==k):[...state.known,k];persist()}
+function renderReview(){document.getElementById("wrongList").innerHTML=state.wrong.length?state.wrong.map(id=>{let l=lessons.find(x=>x.id===id);return l?row(l):""}).join(""):'<p class="muted">아직 등록된 오답이 없어요. 문제를 틀리면 여기에 표시됩니다. 🌿</p>';let p=lessons.filter(l=>!done(l)&&l.id!==3);document.getElementById("pendingList").innerHTML=p.length?p.map(row).join(""):'<p class="muted">밀린 학습이 없어요. 오늘의 학습을 이어가세요!</p>'}
+function renderStats(){let d=state.done.length,total=lessons.length,all=lessons.reduce((n,l)=>n+l.words.length,0);document.getElementById("rate").textContent=Math.round(d/total*100)+"%";document.getElementById("knownRate").textContent=Math.round(state.known.length/all*100)+"%";document.getElementById("wrongCount").textContent=state.wrong.length;document.getElementById("bar").style.width=(d/total*100)+"%";document.getElementById("progressText").textContent=total+"개 예시 챕터 중 "+d+"개 완료 · 단어 "+all+"개 중 "+state.known.length+"개 암기 체크"}
+function renderAll(){document.getElementById("homeList").innerHTML=lessons.map(row).join("");document.getElementById("doneCount").textContent=state.done.length;document.getElementById("pendingCount").textContent=state.wrong.length+lessons.filter(l=>!done(l)&&l.id!==3).length;renderArchive();renderVocab();renderReview();renderStats()}
+function exportData(){const a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify({exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}));a.href=u;a.download="japanese-study-progress.json";a.click();URL.revokeObjectURL(u)}
+function resetData(){if(confirm("테스트 기록을 초기화할까요?")){state={done:[1],known:[],wrong:[],quiz:{}};persist()}}
+document.getElementById("datePill").textContent=new Date().toLocaleDateString("ko-KR",{year:"numeric",month:"2-digit",day:"2-digit"})+" · STUDY";renderAll();
+</script></body></html>
