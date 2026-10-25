@@ -43,7 +43,7 @@ let lessons=[],state={done:[],known:[],wrong:[],quiz:{}},currentId=null,selected
 try{state=JSON.parse(localStorage.getItem(KEY))||state}catch(e){}
 const $=id=>document.getElementById(id);
 async function init(){try{const r=await fetch('./lessons.json');if(!r.ok)throw Error('lessons.json을 불러오지 못했습니다.');const data=await r.json();lessons=data.lessons||[];if(!lessons.length)throw Error('등록된 챕터가 없습니다.');$('datePill').textContent=new Date().toLocaleDateString('ko-KR',{month:'2-digit',day:'2-digit'})+' · STUDY';renderAll();}catch(e){document.querySelector('main').innerHTML='<div class="card"><h1>학습 자료를 불러오지 못했어요.</h1><p>잠시 후 새로고침하거나 GitHub Pages 배포 상태를 확인해 주세요.</p><p class="muted">'+e.message+'</p></div>';}}
-const latestId=22;
+const latestId=23;
 function persist(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
 function isDone(l){return state.done.includes(l.id)}
 function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='v-'+v));document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});renderAll()}
