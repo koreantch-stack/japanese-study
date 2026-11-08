@@ -18,10 +18,16 @@
 </aside>
 <main>
 <section class="view active" id="v-home">
-<div class="hero"><div class="eyebrow">YOUR DAILY JAPANESE</div><h1>오늘도 한 챕터,<br>차근차근 일본어.</h1><p class="muted">오늘의 수업을 읽고, 가려진 뜻을 스스로 확인하고, 짧은 문제로 기억을 꺼내 보세요.</p><button class="btn" onclick="openLesson(latestId)">오늘의 학습 시작하기 →</button></div>
-<div class="stats"><div class="stat"><small>현재 단계</small><strong>N5</strong><small>최종 목표 JLPT N2</small></div><div class="stat"><small>완료 챕터</small><strong id="doneCount">0</strong><small>내 학습 기록</small></div><div class="stat"><small>복습 대기</small><strong id="pendingCount">0</strong><small>밀린 학습 · 오답</small></div></div>
-<h2 class="section-title">오늘과 지난 학습</h2><div class="card" id="homeList"></div>
-<h2 class="section-title">나의 학습 원칙</h2><div class="card"><div class="row"><div class="chapter">30~40분</div><div class="grow"><b>하루 기본 학습 시간</b><small>바쁜 날은 최소 15분</small></div></div><div class="row"><div class="chapter">7 : 3</div><div class="grow"><b>새 내용 70% · 복습 30%</b><small>오답은 간격을 두고 다시 풀기</small></div></div><div class="row"><div class="chapter">N5→N2</div><div class="grow"><b>실력에 맞춰 진도 조절</b><small>한 번 만점이라고 급하게 다음 단계로 넘어가지 않기</small></div></div></div>
+<div class="hero"><div class="eyebrow">JAPANESE LEARNING JOURNEY</div><h1>일본어를 배우고,<br>일본에서 살아보다.</h1><p class="muted">두 가지 방식으로 일본어를 만나세요. Jay의 일본 생활을 따라가거나, JLPT 단계별 학습으로 기초를 단단히 다질 수 있어요.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:17px"><button class="btn" onclick="show('jay')">Jay의 이야기 시작하기 →</button><button class="btn secondary" onclick="openLesson(latestId)">오늘의 N5 학습하기</button></div></div>
+<div class="stats"><div class="stat"><small>현재 학습 단계</small><strong>N5</strong><small>최종 목표 JLPT N2</small></div><div class="stat"><small>완료 챕터</small><strong id="doneCount">0</strong><small>JLPT 학습 기록</small></div><div class="stat"><small>복습 대기</small><strong id="pendingCount">0</strong><small>밀린 학습 · 오답</small></div></div>
+<h2 class="section-title">나의 두 가지 일본어 학습</h2>
+<div class="card">
+<div class="row"><div class="chapter">08:00</div><div class="grow"><b>✦ Jay's Life in Japan</b><small>Jay가 일본에 정착하고 사람들을 만나며 살아가는 연속 생활 드라마</small></div><button class="btn" onclick="show('jay')">이야기 보기</button></div>
+<div class="row"><div class="chapter">12:00</div><div class="grow"><b>📖 매일 일본어 N5 이야기</b><small>매일 다른 주제로 어휘·문법·독해를 익히는 독립형 학습</small></div><button class="btn secondary" onclick="openLesson(latestId)">학습하기</button></div>
+<p class="muted" style="font-size:12px;margin:12px 0 0">두 콘텐츠는 매일 다른 시간에 제공됩니다. Jay 연재는 EP 번호, JLPT 학습은 CH 번호로 구분합니다.</p>
+</div>
+<h2 class="section-title">JLPT 학습 이어가기</h2><div class="card" id="homeList"></div>
+<h2 class="section-title">학습 원칙</h2><div class="card"><div class="row"><div class="chapter">30~40분</div><div class="grow"><b>하루 기본 학습 시간</b><small>바쁜 날은 최소 15분</small></div></div><div class="row"><div class="chapter">7 : 3</div><div class="grow"><b>새 내용 70% · 복습 30%</b><small>오답은 간격을 두고 다시 풀기</small></div></div><div class="row"><div class="chapter">N5→N2</div><div class="grow"><b>실력에 맞춰 진도 조절</b><small>실제 숙달도에 맞춰 단계적으로 난이도를 높입니다.</small></div></div></div>
 </section>
 <section class="view" id="v-jay">
 <div class="hero" style="background:linear-gradient(120deg,#e7eee9,#f3e7d6)">
