@@ -16,6 +16,7 @@
 #readingPanel.open{display:block}#readingPanel strong{display:block;margin-bottom:10px}#readingPanel .size-options{display:flex;gap:6px}#readingPanel .size-options button{flex:1;border:1px solid #d8dfd5;border-radius:9px;padding:9px 5px;background:#f2f4ee;color:#24352c;font-size:13px}#readingPanel .size-options button.active{background:#477657;color:white;border-color:#477657}#readingPanel small{display:block;margin-top:9px;color:#718076;font-size:12px}
 html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25}
 @media(max-width:600px){#readingSettings button{padding:7px 10px;font-size:13px}}
+.board-tools{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0}.board-order{display:flex;gap:5px}.board-pages{display:flex;justify-content:center;align-items:center;gap:5px;flex-wrap:wrap;margin:12px 0 22px}.board-pages .chip:disabled{opacity:.4;cursor:default}.board-pages .chip[aria-current="page"]{font-weight:850}.board-pages .chip{min-width:35px}.board-tools .chip{margin:0}
 </style></head>
 <body><div id="readingPanel" role="dialog" aria-label="글자 크기 설정"><strong>글자 크기</strong><div class="size-options"><button type="button" data-size="normal" onclick="setReadingSize('normal')">보통</button><button type="button" data-size="large" onclick="setReadingSize('large')">크게</button><button type="button" data-size="xlarge" onclick="setReadingSize('xlarge')">아주 크게</button></div><small>설정은 저장되며 모든 학습 페이지에 적용됩니다.</small></div>
 <header class="top"><div class="brand">🌿 일본어 공부방<small>N5부터 N2까지 · 하루 30~40분</small></div><span class="date" id="datePill">오늘의 학습</span><div id="readingSettings"><button type="button" aria-expanded="false" onclick="toggleReadingPanel()">⚙ 설정</button></div></header>
@@ -34,7 +35,7 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 <div class="row"><div class="chapter">12:00</div><div class="grow"><b>📖 매일 일본어 N5 이야기</b><small>매일 다른 주제로 어휘·문법·독해를 익히는 독립형 학습</small></div><button class="btn secondary" onclick="openLesson(latestId)">학습하기</button></div>
 <p class="muted" style="font-size:12px;margin:12px 0 0">두 콘텐츠는 매일 다른 시간에 제공됩니다. Jay 연재는 EP 번호, JLPT 학습은 CH 번호로 구분합니다.</p>
 </div>
-<h2 class="section-title">JLPT 학습 이어가기</h2><div class="card" id="homeList"></div>
+<h2 class="section-title">JLPT 학습 이어가기</h2><div id="homeBoard"></div>
 <h2 class="section-title">학습 원칙</h2><div class="card"><div class="row"><div class="chapter">30~40분</div><div class="grow"><b>하루 기본 학습 시간</b><small>바쁜 날은 최소 15분</small></div></div><div class="row"><div class="chapter">7 : 3</div><div class="grow"><b>새 내용 70% · 복습 30%</b><small>오답은 간격을 두고 다시 풀기</small></div></div><div class="row"><div class="chapter">N5→N2</div><div class="grow"><b>실력에 맞춰 진도 조절</b><small>실제 숙달도에 맞춰 단계적으로 난이도를 높입니다.</small></div></div></div>
 </section>
 <section class="view" id="v-jay">
@@ -45,7 +46,7 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:15px"><span class="tag">연속 생활 드라마</span><span class="tag">N5부터 N2까지</span><span class="tag">매일 오전 8시</span></div>
 </div>
 <h2 class="section-title">첫 번째 시즌 · 일본 정착기</h2>
-<div class="card">
+<div class="card" id="jayBoardSource" style="display:none">
 <div class="row"><div class="chapter">EP.01</div><div class="grow"><b>일본에 도착하다</b><small>공항 · 입국 · 새로운 시작 · 2026.11.09</small></div><a class="btn secondary" href="jay-ep01.html">다시 학습하기</a></div>
 <div class="row"><div class="chapter">EP.02</div><div class="grow"><b>새로운 집을 찾아서</b><small>부동산 · 방 구경 · 집세와 초기 비용 · 2026.11.10</small></div><a class="btn" href="jay-ep02.html">오늘 학습하기</a></div>
 <div class="row"><div class="chapter">EP.03</div><div class="grow"><b>새 집에서 첫 장보기</b><small>슈퍼마켓 · 레지袋 · 장바구니 · 2026.11.11</small></div><a class="btn" href="jay-ep03.html">오늘 학습하기</a></div>
@@ -54,6 +55,7 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 <div class="row"><div class="chapter">EP.06</div><div class="grow"><b>처음 만난 이웃</b><small>인사 · 자기소개 · 이웃 관계</small></div><span class="tag">예정</span></div>
 <div class="row"><div class="chapter">EP.07</div><div class="grow"><b>일본어로 하루를 기록하다</b><small>일기 · 회고 · 첫 주 복습</small></div><span class="tag">예정</span></div>
 </div>
+<div id="jayBoard"></div>
 <h2 class="section-title">Jay와 함께 배우는 방법</h2>
 <div class="card">
 <div class="row"><div class="chapter">01</div><div class="grow"><b>이야기 읽기</b><small>일본어 원문과 문장별 직역, 모든 한자에 후리가나</small></div></div>
@@ -71,7 +73,7 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 <div class="card"><h2 class="step">STEP 4 · 문장 만들기</h2><p class="muted">먼저 직접 문장을 만들어 보고, 예시 답안을 눌러 확인하세요.</p><div id="making"></div></div>
 <div class="card"><h2 class="step">STEP 5 · 복습 테스트</h2><div id="quiz"></div><button class="btn" onclick="checkQuiz()">정답 확인</button><div id="feedback"></div><p><button class="btn secondary" onclick="completeLesson()">오늘 학습 완료 ✓</button></p></div>
 </section>
-<section class="view" id="v-archive"><div class="eyebrow">STUDY HISTORY</div><h1 class="lesson-title">챕터 보관함</h1><p class="muted">완료한 학습도 다시 열 수 있어요. 아직 하지 않은 학습은 밀린 목록에 따로 표시됩니다.</p><div><button class="chip active" data-filter="all">전체</button><button class="chip" data-filter="todo">미학습</button><button class="chip" data-filter="done">완료</button></div><div class="card" id="archiveList"></div></section>
+<section class="view" id="v-archive"><div class="eyebrow">STUDY HISTORY</div><h1 class="lesson-title">챕터 보관함</h1><p class="muted">완료한 학습도 다시 열 수 있어요. 아직 하지 않은 학습은 밀린 목록에 따로 표시됩니다.</p><div><button class="chip active" data-filter="all">전체</button><button class="chip" data-filter="todo">미학습</button><button class="chip" data-filter="done">완료</button></div><div id="archiveBoard"></div></section>
 <section class="view" id="v-vocab"><div class="eyebrow">WORD NOTE</div><h1 class="lesson-title">나의 단어장</h1><p class="muted">뜻을 떠올린 뒤 눌러 확인하고 암기 상태를 기록하세요.</p><div class="card" id="vocabList"></div></section>
 <section class="view" id="v-review"><div class="eyebrow">REVIEW LOOP</div><h1 class="lesson-title">복습 · 오답 노트</h1><p class="muted">지난 학습을 오늘 학습과 분리해 관리합니다.</p><h2 class="section-title">다시 풀 문제</h2><div class="card" id="wrongList"></div><h2 class="section-title">밀린 학습</h2><div class="card" id="pendingList"></div></section>
 <section class="view" id="v-stats"><div class="eyebrow">YOUR PROGRESS</div><h1 class="lesson-title">학습 통계</h1><div class="stats"><div class="stat"><small>완료율</small><strong id="rate">0%</strong></div><div class="stat"><small>단어 암기</small><strong id="knownRate">0%</strong></div><div class="stat"><small>누적 오답</small><strong id="wrongCount">0</strong></div></div><div class="card"><div class="progress"><div id="bar"></div></div><p id="progressText" class="muted"></p><button class="btn" onclick="exportData()">학습 기록 내보내기 (.json)</button><p class="muted" style="font-size:12px">현재 학습 기록은 이 브라우저에 저장됩니다. 기기 간 동기화는 아직 지원하지 않습니다.</p></div></section>
@@ -110,12 +112,28 @@ function pick(el){const q=el.dataset.q;document.querySelectorAll('[data-q="'+q+'
 function checkQuiz(){if(currentId===null)return;const l=lessons.find(x=>x.id===currentId);if(!selectedAnswer||Object.keys(selectedAnswer).length<l.quiz.length){$('feedback').innerHTML='<div class="feedback bad">모든 문제를 선택한 뒤 확인해 주세요.</div>';return}let score=0;l.quiz.forEach((q,i)=>{const ok=selectedAnswer[i]===q.answer;if(ok)score++;document.querySelectorAll('[data-q="'+i+'"]').forEach((b,j)=>{b.classList.toggle('selected',j===selectedAnswer[i]);if(j===q.answer)b.style.borderColor='var(--green)'})});const wrong=score===l.quiz.length?state.wrong.filter(x=>x!==currentId):[...new Set([...state.wrong,currentId])];state.wrong=wrong;state.quiz[currentId]={score,total:l.quiz.length,answers:selectedAnswer};persist();$('feedback').innerHTML='<div class="feedback '+(score===l.quiz.length?'':'bad')+'"><b>'+score+' / '+l.quiz.length+' 정답</b><br>'+l.quiz.map((q,i)=>(i+1)+'. '+q.explanation).join('<br>')+'</div>'}
 function completeLesson(){if(currentId===null)return;if(!state.done.includes(currentId))state.done.push(currentId);state.wrong=state.wrong.filter(x=>x!==currentId);persist();$('feedback').innerHTML='<div class="feedback">학습 완료를 기록했어요. 잘했어요! 🌱</div>'}
 function toggleKnown(k,button){const wasKnown=state.known.includes(k);state.known=wasKnown?state.known.filter(x=>x!==k):[...state.known,k];if(button){button.classList.toggle('active',!wasKnown);button.textContent=wasKnown?'チェック':'외움 ✓';}persist()}
-function renderArchive(){const list=lessons.filter(l=>activeFilter==='all'||(activeFilter==='done'?isDone(l):!isDone(l)));$('archiveList').innerHTML=list.map(chapterRow).join('')||'<p class="muted">해당하는 챕터가 없습니다.</p>'}
-document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderArchive()});
+const boardState={home:{order:'new',page:1},archive:{order:'new',page:1},jay:{order:'new',page:1}};
+function boardRender(key,items,rowFn){
+ const st=boardState[key],sorted=[...items].sort((a,b)=>st.order==='new'?b.num-a.num:a.num-b.num);
+ const pages=Math.max(1,Math.ceil(sorted.length/10));st.page=Math.min(st.page,pages);
+ const start=(st.page-1)*10;
+ const controls='<div class="board-tools"><div class="board-order"><button type="button" class="chip '+(st.order==='new'?'active':'')+'" onclick="boardOrder(\''+key+'\',\'new\')">최신부터</button><button type="button" class="chip '+(st.order==='old'?'active':'')+'" onclick="boardOrder(\''+key+'\',\'old\')">첫 화부터</button></div><small class="muted">총 '+items.length+'개 · 페이지당 10개</small></div>';
+ const nav='<nav class="board-pages" aria-label="목록 페이지"><button type="button" class="chip" '+(st.page===1?'disabled':'')+' onclick="boardPage(\''+key+'\','+(st.page-1)+')">이전</button>'+Array.from({length:pages},(_,i)=>'<button type="button" class="chip '+(st.page===i+1?'active':'')+'" '+(st.page===i+1?'aria-current="page"':'')+' onclick="boardPage(\''+key+'\','+(i+1)+')">'+(i+1)+'</button>').join('')+'<button type="button" class="chip" '+(st.page===pages?'disabled':'')+' onclick="boardPage(\''+key+'\','+(st.page+1)+')">다음</button></nav>';
+ document.getElementById(key+'Board').innerHTML=controls+'<div class="card">'+(sorted.slice(start,start+10).map(rowFn).join('')||'<p class="muted">해당하는 항목이 없습니다.</p>')+'</div>'+nav;
+}
+function boardOrder(key,order){boardState[key].order=order;boardState[key].page=1;renderBoards(key)}
+function boardPage(key,page){boardState[key].page=page;renderBoards(key)}
+function renderBoards(key){
+ if(key==='home')boardRender('home',lessons.map(l=>({num:Number(l.chapter)||l.id,lesson:l})),x=>chapterRow(x.lesson));
+ if(key==='archive'){const filtered=lessons.filter(l=>activeFilter==='all'||(activeFilter==='done'?isDone(l):!isDone(l)));boardRender('archive',filtered.map(l=>({num:Number(l.chapter)||l.id,lesson:l})),x=>chapterRow(x.lesson))}
+ if(key==='jay'){const entries=[...document.querySelectorAll('#jayBoardSource > .row')].map((el,i)=>({num:i+1,html:el.outerHTML}));boardRender('jay',entries,x=>x.html)}
+}
+function renderArchive(){renderBoards('archive')}
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;boardState.archive.page=1;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderArchive()});
 function renderVocab(){$('vocabList').innerHTML=lessons.flatMap(l=>l.vocab.map(w=>({l,w,k:l.id+'-'+w.word}))).map(o=>'<div class="row"><div class="grow"><b>'+o.w.word+'　<span class="muted">'+o.w.kana+'</span></b><small>'+o.l.title+' · <span class="answer" onclick="reveal(this)">'+o.w.meaning+'</span></small></div><button class="chip '+(state.known.includes(o.k)?'active':'')+'" onclick="toggleKnown(\''+o.k+'\')">'+(state.known.includes(o.k)?'외움 ✓':'외웠어요')+'</button></div>').join('')}
 function renderReview(){$('wrongList').innerHTML=state.wrong.length?state.wrong.map(id=>{const l=lessons.find(x=>x.id===id);return l?chapterRow(l):''}).join(''):'<p class="muted">등록된 오답이 없어요. 문제를 틀리면 여기에 표시됩니다.</p>';$('pendingList').innerHTML=lessons.filter(l=>!isDone(l)&&l.id!==latestId).map(chapterRow).join('')||'<p class="muted">밀린 학습이 없어요.</p>'}
 function renderStats(){const total=lessons.length,done=state.done.length,wordTotal=lessons.reduce((n,l)=>n+l.vocab.length,0);$('rate').textContent=Math.round(done/total*100)+'%';$('knownRate').textContent=Math.round(state.known.length/wordTotal*100)+'%';$('wrongCount').textContent=state.wrong.length;$('bar').style.width=(done/total*100)+'%';$('progressText').textContent=done+' / '+total+'개 챕터 완료 · 단어 '+state.known.length+' / '+wordTotal+'개 암기 체크';}
-function renderAll(){if(!lessons.length)return;$('homeList').innerHTML=[...lessons].sort((a,b)=>b.id-a.id).map(chapterRow).join('');$('doneCount').textContent=state.done.length;$('pendingCount').textContent=state.wrong.length+lessons.filter(l=>!isDone(l)&&l.id!==latestId).length;renderArchive();renderVocab();renderReview();renderStats()}
+function renderAll(){if(!lessons.length)return;renderBoards('home');renderBoards('jay');$('doneCount').textContent=state.done.length;$('pendingCount').textContent=state.wrong.length+lessons.filter(l=>!isDone(l)&&l.id!==latestId).length;renderArchive();renderVocab();renderReview();renderStats()}
 function exportData(){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify({exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}));a.href=u;a.download='japanese-study-progress.json';a.click();URL.revokeObjectURL(u)}
 init();
 </script><script>
