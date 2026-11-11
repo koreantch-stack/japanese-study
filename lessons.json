@@ -166,7 +166,8 @@
           "answer": 2,
           "explanation": "切手는 우표입니다."
         }
-      ]
+      ],
+      "chapter": 1
     },
     {
       "id": 2,
@@ -335,7 +336,8 @@
           "answer": 0,
           "explanation": "～ので는 이유를 나타냅니다."
         }
-      ]
+      ],
+      "chapter": 2
     },
     {
       "id": 3,
@@ -504,7 +506,8 @@
           "answer": 1,
           "explanation": "図書館은 도서관입니다."
         }
-      ]
+      ],
+      "chapter": 3
     },
     {
       "id": 4,
@@ -673,7 +676,8 @@
           "answer": 1,
           "explanation": "～てから는 순서를 나타냅니다."
         }
-      ]
+      ],
+      "chapter": 4
     },
     {
       "id": 22,
