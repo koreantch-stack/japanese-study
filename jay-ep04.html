@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f4ec">
+<title>EP.04 동네를 둘러보다 | Jay's Life in Japan</title>
+<style>
+:root{--bg:#f6f4ec;--paper:#fffefa;--ink:#24352c;--muted:#718076;--green:#477657;--line:#e3e5d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,-apple-system,"Noto Sans KR",sans-serif;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.wrap{max-width:850px;margin:28px auto;padding:0 16px}.top,.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:15px}.top{background:linear-gradient(120deg,#e7eee9,#f3e7d6)}
+.eyebrow{font-size:12px;letter-spacing:1px;color:var(--green);font-weight:800}.title{font-size:clamp(28px,5vw,40px);line-height:1.25;margin:8px 0}.muted,.ko{color:var(--muted)}.jp{font-size:19px;font-weight:650;line-height:1.95}.line{padding:14px 0;border-bottom:1px dashed var(--line)}.line:last-child{border:0}.ko{margin-top:8px}.step{font-size:21px;margin:0 0 12px}
+.table{width:100%;border-collapse:collapse}.table td,.table th{text-align:left;padding:9px 7px;border-bottom:1px solid var(--line)}.table th{font-size:12px;color:var(--muted)}
+.answer{filter:blur(5px);cursor:pointer;display:inline-block;user-select:none;background:#edf1e9;border-radius:6px;padding:1px 6px;transition:filter .18s,background .18s}.answer.show{filter:none;user-select:text;background:transparent}.answer:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.note{background:#f8f1e3;border-radius:11px;padding:12px;color:#796744;font-size:13px;margin-top:12px}.btn{display:inline-block;background:var(--green);color:white;text-decoration:none;border-radius:10px;padding:10px 15px;font:inherit;font-weight:750}.btn.secondary{background:#e8eee7;color:var(--ink);border:1px solid var(--line)}
+.grammar{background:#f0f3e9;border-radius:13px;padding:14px;margin:10px 0}.example{border-top:1px solid #dfe6d9;padding-top:8px;margin-top:8px}.dialogue{padding:12px 0;border-bottom:1px solid var(--line)}.dialogue:last-child{border:0}
+.bottom-nav{position:fixed!important;display:flex!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;z-index:2147483000!important;width:100%!important;max-width:none!important;min-height:62px;justify-content:space-around;align-items:center;gap:2px;padding:7px 4px calc(7px + env(safe-area-inset-bottom));background:#fffefa!important;border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(36,53,44,.10)}
+.bottom-nav a{flex:1;min-width:0;text-align:center;text-decoration:none;color:var(--muted);font-size:11px;line-height:1.35;padding:3px 1px}.bottom-nav a span{display:block;font-size:19px;line-height:1.3;margin-bottom:2px}.bottom-nav a.current{color:var(--green);font-weight:850}
+@media(min-width:761px){.bottom-nav{max-width:850px!important;left:50%!important;right:auto!important;width:calc(100% - 32px)!important;transform:translateX(-50%)!important;border:1px solid var(--line);border-bottom:0;border-radius:16px 16px 0 0}}
+@media(max-width:600px){.wrap{margin:14px auto;padding:0 12px}.top,.card{padding:16px}.jp{font-size:18px}.table td,.table th{padding:8px 4px;font-size:14px}}
+#readingSettings{position:fixed;top:10px;right:12px;z-index:2147483001;font:inherit}
+#readingSettings button{border:1px solid #d8dfd5;border-radius:999px;background:#fffefa;color:#24352c;padding:8px 12px;font-weight:750;box-shadow:0 2px 10px #24352c18;cursor:pointer}
+#readingPanel{display:none;position:fixed;top:54px;right:12px;z-index:2147483002;width:min(280px,calc(100vw - 24px));padding:14px;background:#fffefa;border:1px solid #d8dfd5;border-radius:14px;box-shadow:0 8px 28px #24352c25;color:#24352c}
+#readingPanel.open{display:block}#readingPanel strong{display:block;margin-bottom:10px}#readingPanel .size-options{display:flex;gap:6px}#readingPanel .size-options button{flex:1;border:1px solid #d8dfd5;border-radius:9px;padding:9px 5px;background:#f2f4ee;color:#24352c;font-size:13px}#readingPanel .size-options button.active{background:#477657;color:white;border-color:#477657}#readingPanel small{display:block;margin-top:9px;color:#718076;font-size:12px}
+html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25}
+@media(max-width:600px){#readingSettings{top:8px;right:8px}#readingSettings button{padding:7px 10px;font-size:13px}}
+</style></head><body><div id="readingSettings"><button type="button" aria-expanded="false" onclick="toggleReadingPanel()">⚙ 설정</button></div><div id="readingPanel" role="dialog" aria-label="글자 크기 설정"><strong>글자 크기</strong><div class="size-options"><button type="button" data-size="normal" onclick="setReadingSize('normal')">보통</button><button type="button" data-size="large" onclick="setReadingSize('large')">크게</button><button type="button" data-size="xlarge" onclick="setReadingSize('xlarge')">아주 크게</button></div><small>설정은 저장되며 모든 학습 페이지에 적용됩니다.</small></div>
+<main class="wrap">
+<header class="top"><div class="eyebrow">JAY'S LIFE IN JAPAN · SEASON 1 · 2026.11.12</div><h1 class="title">EP.04. 동네를 둘러보다</h1><p class="muted">ごみの出（だ）し方（かた）を知（し）る · 쓰레기 배출 방법을 알다</p><p>EP.03 다음 날 아침. Jay는 전날 장을 보며 나온 포장 용기를 정리하려다가 쓰레기를 어디에, 언제 내놓아야 할지 모른다는 사실을 깨닫습니다. 그때 옆집 이웃을 처음 만납니다.</p><div class="note">JLPT N5 중심 · 약 35~40분 · 읽기 8분 · 어휘 6분 · 문법 8분 · 생활 회화 5분 · 미션과 쓰기 8분 · 듣기 연습 없음</div></header>
+
+<section class="card"><h2 class="step">STEP 1 · 이야기 읽기</h2><p class="muted">일본어 문장을 먼저 읽어 보세요. 각 문장 아래 흐리게 가려진 한국어 직역을 누르면 뜻이 나타납니다. 다시 누르면 가려집니다.</p>
+<div class="line"><div class="jp">① 次（つぎ）の日（ひ）の朝（あさ）、ジェイは昨日（きのう）買（か）った物（もの）の容器（ようき）や袋（ふくろ）を持（も）って、建物（たてもの）の入口（いりぐち）へ行（い）きました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">다음 날 아침, 제이는 어제 산 물건의 용기나 봉투를 가지고 건물 입구로 갔습니다.</div></div>
+<div class="line"><div class="jp">② でも、ごみを出（だ）す場所（ばしょ）が分（わ）かりませんでした。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">하지만, 쓰레기를 내놓는 장소를 알 수 없었습니다.</div></div>
+<div class="line"><div class="jp">③ 入口（いりぐち）の近（ちか）くに、小（ちい）さな案内（あんない）がありました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">입구 가까이에, 작은 안내문이 있었습니다.</div></div>
+<div class="line"><div class="jp">④ そこには「ごみは決（き）められた日（ひ）に、決（き）められた場所（ばしょ）へ出（だ）してください」と書（か）いてありました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">거기에는 “쓰레기는 정해진 날에, 정해진 장소에 내놓아 주세요”라고 적혀 있었습니다.</div></div>
+<div class="line"><div class="jp">⑤ ジェイは曜日（ようび）の表（ひょう）を見（み）ましたが、どのごみをいつ出（だ）すのか、よく分（わ）かりません。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 요일 표를 보았지만, 어떤 쓰레기를 언제 내놓는지 잘 알지 못합니다.</div></div>
+<div class="line"><div class="jp">⑥ そのとき、隣（となり）の部屋（へや）から人（ひと）が出（で）てきました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그때, 옆방에서 사람이 나왔습니다.</div></div>
+<div class="line"><div class="jp">⑦ その人（ひと）は「はじめまして。隣（となり）の田中（たなか）です。何（なに）か困（こま）っていますか」と言（い）いました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그 사람은 “처음 뵙겠습니다. 옆집의 다나카입니다. 무언가 곤란한 일이 있습니까?”라고 말했습니다.</div></div>
+<div class="line"><div class="jp">⑧ ジェイは「はじめまして。韓国（かんこく）から来（き）ました。ごみの出（だ）し方（かた）が分（わ）かりません。教（おし）えてください」と言（い）いました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 “처음 뵙겠습니다. 한국에서 왔습니다. 쓰레기를 내놓는 방법을 모르겠습니다. 가르쳐 주세요.”라고 말했습니다.</div></div>
+<div class="line"><div class="jp">⑨ 田中（たなか）さんは市（し）の分別表（ぶんべつひょう）を見（み）せて、「この町（まち）では、ごみの種類（しゅるい）で出（だ）す日（ひ）が違（ちが）いますよ」と説明（せつめい）しました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">다나카 씨는 시의 분리수거표를 보여 주고, “이 동네에서는 쓰레기의 종류에 따라 내놓는 날이 달라요.”라고 설명했습니다.</div></div>
+<div class="line"><div class="jp">⑩ ジェイはスマートフォンで市（し）の案内（あんない）を開（ひら）き、「ありがとうございます。これからは、この表（ひょう）を見（み）ます」と言（い）いました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 스마트폰으로 시의 안내를 열고, “감사합니다. 이제부터는 이 표를 보겠습니다.”라고 말했습니다.</div></div>
+</section>
+
+<section class="card"><h2 class="step">STEP 2 · 핵심 어휘 10개</h2><p class="muted">읽기를 확인한 뒤, 흐리게 가려진 뜻을 하나씩 눌러 보세요.</p><table class="table"><tr><th>일본어</th><th>읽기</th><th>뜻</th></tr>
+<tr><td>容器（ようき）</td><td>ようき</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">용기, 그릇</span></td></tr>
+<tr><td>入口（いりぐち）</td><td>いりぐち</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">입구</span></td></tr>
+<tr><td>案内（あんない）</td><td>あんない</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">안내</span></td></tr>
+<tr><td>曜日（ようび）</td><td>ようび</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">요일</span></td></tr>
+<tr><td>表（ひょう）</td><td>ひょう</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">표</span></td></tr>
+<tr><td>隣（となり）</td><td>となり</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">옆, 이웃</span></td></tr>
+<tr><td>分別（ぶんべつ）</td><td>ぶんべつ</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">분리, 분별</span></td></tr>
+<tr><td>種類（しゅるい）</td><td>しゅるい</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">종류</span></td></tr>
+<tr><td>出し方（だしかた）</td><td>だしかた</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">내놓는 방법, 배출 방법</span></td></tr>
+<tr><td>確認（かくにん）</td><td>かくにん</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">확인</span></td></tr></table></section>
+
+<section class="card"><h2 class="step">STEP 3 · 오늘의 문법 4개</h2>
+<div class="grammar"><b>① 동사 ます형 어간 + 方（かた） · ~하는 방법</b><p>동사의 ます형에서 ます를 빼고 方를 붙이면 어떤 일을 하는 방법이라는 뜻이 됩니다. 出（だ）します → 出（だ）し + 方（かた） → 出（だ）し方（かた）</p><div class="example"><div class="jp">ごみの出（だ）し方（かた）を教（おし）えてください。</div><div class="ko">쓰레기를 내놓는 방법을 가르쳐 주세요.</div></div></div>
+<div class="grammar"><b>② 명사 + が分（わ）かりません · ~을/를 모르겠습니다</b><p>정보나 방법을 알지 못할 때 사용합니다. 정중하게 자신의 어려움을 설명할 수 있습니다.</p><div class="example"><div class="jp">ごみを出（だ）す日（ひ）が分（わ）かりません。</div><div class="ko">쓰레기를 내놓는 날을 모르겠습니다.</div></div></div>
+<div class="grammar"><b>③ 동사 て형 + ください · ~해 주세요</b><p>상대방에게 정중하게 부탁하거나 안내할 때 사용합니다. 동사의 て형을 만든 뒤 ください를 붙입니다.</p><div class="example"><div class="jp">この表（ひょう）を見（み）てください。</div><div class="ko">이 표를 봐 주세요.</div></div></div>
+<div class="grammar"><b>④ 명사 + で · ~으로, ~를 사용해서</b><p>도구나 수단을 나타냅니다. 무엇을 이용해 행동하는지 설명할 때 사용합니다.</p><div class="example"><div class="jp">スマートフォンで市（し）の案内（あんない）を見（み）ます。</div><div class="ko">스마트폰으로 시의 안내를 봅니다.</div></div></div></section>
+
+<section class="card"><h2 class="step">STEP 4 · 생활 회화</h2><p class="muted">아래는 옆집 이웃에게 쓰레기 배출 방법을 묻는 상황을 위해 구성한 학습용 대화입니다. 특정 이웃의 실제 발언을 옮긴 것이 아닙니다. 부탁 표현과 질문 표현은 일상에서 사용할 수 있는 기본적인 정중 표현입니다.</p>
+<div class="dialogue"><b>田中（たなか）さん：</b><div class="jp">おはようございます。何（なに）か困（こま）っていますか。</div><div class="ko">안녕하세요. 무언가 곤란한 일이 있습니까?</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">すみません。ごみの出（だ）し方（かた）を教（おし）えてください。</div><div class="ko">실례합니다. 쓰레기를 내놓는 방법을 가르쳐 주세요.</div></div>
+<div class="dialogue"><b>田中（たなか）さん：</b><div class="jp">市（し）の分別表（ぶんべつひょう）を見（み）てください。ごみの種類（しゅるい）で、出（だ）す日（ひ）が違（ちが）います。</div><div class="ko">시의 분리수거표를 봐 주세요. 쓰레기의 종류에 따라 내놓는 날이 다릅니다.</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">ありがとうございます。スマートフォンで見（み）てもいいですか。</div><div class="ko">감사합니다. 스마트폰으로 봐도 됩니까?</div></div>
+<div class="dialogue"><b>田中（たなか）さん：</b><div class="jp">はい。市（し）のホームページにもありますよ。</div><div class="ko">네. 시 홈페이지에도 있어요.</div></div>
+<div class="note"><b>처음 인사할 때:</b> 「はじめまして。隣（となり）の田中（たなか）です。よろしくお願（ねが）いします。」 · 처음 뵙겠습니다. 옆집의 다나카입니다. 잘 부탁드립니다.</div></section>
+
+<section class="card"><h2 class="step">STEP 5 · 일본 생활문화</h2>
+<p><b>① 쓰레기 배출 규칙은 지역마다 다릅니다.</b><br>일본에서는 쓰레기 종류, 배출 요일, 배출 장소, 배출 시간과 지정 봉투 사용 여부 등이 지자체와 거주 지역에 따라 달라질 수 있습니다. 같은 구나 시 안에서도 동네별 수거 요일이 나뉘는 경우가 있으므로, 다른 지역의 규칙을 그대로 따라서는 안 됩니다.</p>
+<p><b>② 이사한 뒤 확인할 곳</b><br>먼저 아파트 입구나 쓰레기 보관 장소의 안내문을 확인합니다. 자세한 분류 기준은 해당 시·구의 공식 홈페이지나 분리수거 안내표에서 확인하고, 건물 안의 배출 장소가 헷갈리면 관리회사나 이웃에게 물어보면 좋습니다. 안내에 적힌 날짜와 시간, 장소를 지키는 것이 중요합니다.</p>
+<p><b>③ 한국어 안내도 찾아볼 수 있습니다.</b><br>일부 지자체는 외국어 안내를 제공합니다. 예를 들어 사이타마시는 쓰레기 배출 방법과 수거일 등을 안내하는 앱에서 한국어·조선어를 지원한다고 안내하고 있습니다. 다만 이용할 수 있는 앱과 언어는 지자체마다 다릅니다.</p>
+<div class="note">공식 자료: <a href="https://www.city.saitama.lg.jp/jp/sc/living-garbage.html" target="_blank" rel="noopener">사이타마시 외국어 쓰레기 배출 안내</a> · <a href="https://www.city.shinagawa.tokyo.jp/kurashi/gomi/1009407/1003963/1003965.html" target="_blank" rel="noopener">시나가와구 지역별 수거 요일 안내 예시</a></div>
+</section>
+
+<section class="card"><h2 class="step">STEP 6 · 상황 선택 미션</h2><p><b>상황:</b> 쓰레기를 언제 내놓아야 할지 모르겠습니다. 옆집 이웃에게 정중하게 방법을 물으려면 어떤 표현이 가장 알맞을까요?</p>
+<div class="grammar"><p><b>A.</b> ごみの出（だ）し方（かた）を教（おし）えてください。</p><p class="ko">쓰레기를 내놓는 방법을 가르쳐 주세요.</p><p><b>B.</b> ごみは毎日（まいにち）出（だ）します。</p><p class="ko">쓰레기는 매일 내놓습니다.</p><p><b>C.</b> ごみはどこで食（た）べますか。</p><p class="ko">쓰레기는 어디에서 먹습니까?</p><p class="answer" tabindex="0" role="button" aria-pressed="false">정답: A</p><p class="muted">A는 방법을 정중하게 물을 때 쓸 수 있습니다. B는 매일 쓰레기를 내놓는다는 진술이고, C는 '먹다'라는 동사를 사용해 상황에 맞지 않습니다.</p></div></section>
+
+<section class="card"><h2 class="step">STEP 7 · 직접 문장 만들기</h2>
+<div class="line"><b>1. 쓰레기를 내놓는 방법을 모르겠습니다.</b><p class="answer" tabindex="0" role="button" aria-pressed="false">ごみの出（だ）し方（かた）が分（わ）かりません。</p><p class="muted">해설: 동사 出します의 ます를 빼고 方를 붙여 出し方를 만듭니다.</p></div>
+<div class="line"><b>2. 이 표를 봐 주세요.</b><p class="answer" tabindex="0" role="button" aria-pressed="false">この表（ひょう）を見（み）てください。</p><p class="muted">해설: 見ます의 て형 見て에 ください를 붙입니다.</p></div>
+<div class="line"><b>3. 스마트폰으로 시의 안내를 봅니다.</b><p class="answer" tabindex="0" role="button" aria-pressed="false">スマートフォンで市（し）の案内（あんない）を見（み）ます。</p><p class="muted">해설: 도구나 수단을 나타낼 때 조사 で를 사용합니다.</p></div>
+<p class="note">먼저 직접 일본어로 써 본 다음, 흐리게 가려진 정답을 눌러 확인하세요. 문장을 통째로 외우기보다 단어를 바꾸어 새 문장을 만들어 보세요.</p></section>
+
+<section class="card"><h2 class="step">다음 이야기 · EP.05</h2><b>전철을 잘못 탔다</b><p class="muted">동네와 쓰레기 배출 방법을 조금씩 알아 간 Jay. 며칠 뒤, 새로운 생활에 필요한 물건을 사러 나갔다가 전철을 잘못 타고 맙니다.</p><a class="btn" href="index.html?tab=jay">Jay의 일본 생활기 목록</a> <a class="btn secondary" href="jay-ep03.html">EP.03 다시 보기</a></section>
+</main>
+<nav class="bottom-nav" aria-label="주요 메뉴">
+<a href="index.html?tab=home"><span>⌂</span>홈</a><a href="index.html?tab=jay" class="current" aria-current="page"><span>✦</span>Jay</a><a href="index.html?tab=lesson"><span>▤</span>학습</a><a href="index.html?tab=archive"><span>▦</span>챕터</a><a href="index.html?tab=vocab"><span>◇</span>단어장</a><a href="index.html?tab=review"><span>↻</span>복습</a>
+</nav>
+<script>
+function toggleAnswer(el){const visible=el.classList.toggle('show');el.setAttribute('aria-pressed',String(visible));el.title=visible?'다시 눌러 가리기':'눌러서 뜻 또는 정답 보기'}
+document.querySelectorAll('.answer').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleAnswer(el)}})});
+(function(){const key='jayReadingSize';function apply(v){const h=document.documentElement;h.classList.remove('reading-large','reading-xlarge');if(v==='large')h.classList.add('reading-large');if(v==='xlarge')h.classList.add('reading-xlarge');document.querySelectorAll('#readingPanel [data-size]').forEach(b=>b.classList.toggle('active',b.dataset.size===v));}window.setReadingSize=function(v){localStorage.setItem(key,v);apply(v)};window.toggleReadingPanel=function(){const p=document.getElementById('readingPanel');p.classList.toggle('open');document.querySelector('#readingSettings button').setAttribute('aria-expanded',p.classList.contains('open')?'true':'false')};const v=localStorage.getItem(key)||'normal';apply(v);})();
+</script></body></html>
