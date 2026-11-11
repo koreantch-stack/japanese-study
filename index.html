@@ -89,12 +89,12 @@ const $=id=>document.getElementById(id);
 async function init(){try{const r=await fetch('./lessons.json');if(!r.ok)throw Error('lessons.json을 불러오지 못했습니다.');const data=await r.json();lessons=data.lessons||[];if(!lessons.length)throw Error('등록된 챕터가 없습니다.');$('datePill').textContent=new Date().toLocaleDateString('ko-KR',{month:'2-digit',day:'2-digit'})+' · STUDY';renderAll();}catch(e){document.querySelector('main').innerHTML='<div class="card"><h1>학습 자료를 불러오지 못했어요.</h1><p>잠시 후 새로고침하거나 GitHub Pages 배포 상태를 확인해 주세요.</p><p class="muted">'+e.message+'</p></div>';}}
 const latestId=39;
 const requestedTab=new URLSearchParams(location.search).get('tab');
-if(requestedTab && ['home','jay','jlpt','lesson','archive','vocab','review','stats'].includes(requestedTab)){window.addEventListener('DOMContentLoaded',()=>show(requestedTab));}
+if(requestedTab && ['home','jay','jlpt','lesson','archive','vocab','review','stats'].includes(requestedTab)){window.addEventListener('DOMContentLoaded',()=>{if(requestedTab==='lesson')openLesson(latestId);else show(requestedTab)});}
 
 function persist(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
 function isDone(l){return state.done.includes(l.id)}
 function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='v-'+v));document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});renderAll()}
-document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>show(b.dataset.view));
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{const v=b.dataset.view;if(v==='lesson')openLesson(latestId);else show(v)});
 function reveal(el){el.classList.toggle('revealed')}
 function speechText(text){return text.replace(/（[ぁ-ゖァ-ヺー]+）/g,'').replace(/\s+/g,' ').trim()}
 let activeSentenceButton=null;
@@ -120,7 +120,7 @@ function boardRender(key,items,rowFn){
  const start=(st.page-1)*10;
  const controls='<div class="board-tools"><div class="board-order"><button type="button" class="chip '+(st.order==='new'?'active':'')+'" onclick="boardOrder(\''+key+'\',\'new\')">최신부터</button><button type="button" class="chip '+(st.order==='old'?'active':'')+'" onclick="boardOrder(\''+key+'\',\'old\')">첫 화부터</button></div><small class="muted">총 '+items.length+'개 · 페이지당 10개</small></div>';
  const nav='<nav class="board-pages" aria-label="목록 페이지"><button type="button" class="chip" '+(st.page===1?'disabled':'')+' onclick="boardPage(\''+key+'\','+(st.page-1)+')">이전</button>'+Array.from({length:pages},(_,i)=>'<button type="button" class="chip '+(st.page===i+1?'active':'')+'" '+(st.page===i+1?'aria-current="page"':'')+' onclick="boardPage(\''+key+'\','+(i+1)+')">'+(i+1)+'</button>').join('')+'<button type="button" class="chip" '+(st.page===pages?'disabled':'')+' onclick="boardPage(\''+key+'\','+(st.page+1)+')">다음</button></nav>';
- document.getElementById(key+'Board').innerHTML=controls+'<div class="card">'+(sorted.slice(start,start+10).map(rowFn).join('')||'<p class="muted">해당하는 항목이 없습니다.</p>')+'</div>'+nav;
+ const target=document.getElementById(key+'Board');if(!target){console.warn('목록 영역을 찾을 수 없습니다:',key+'Board');return;}target.innerHTML=controls+'<div class="card">'+(sorted.slice(start,start+10).map(rowFn).join('')||'<p class="muted">해당하는 항목이 없습니다.</p>')+'</div>'+nav;
 }
 function boardOrder(key,order){boardState[key].order=order;boardState[key].page=1;renderBoards(key)}
 function boardPage(key,page){boardState[key].page=page;renderBoards(key)}
