@@ -38,3 +38,16 @@ body{background:radial-gradient(circle at 8% 3%,#fff0f4 0,transparent 25rem),rad
 #readingPanel{border-color:#dce5f2}
 #readingPanel .size-options button.active{background:#4c70a4;border-color:#4c70a4}
 @media(max-width:760px){.hero{background:linear-gradient(135deg,#e5f0ff,#fff0f4 70%,#fff8e9)}.layout{margin-top:14px}.side,.card,.stat{box-shadow:0 3px 14px #34496a08}}
+
+/* Shared episode-page polish */
+.wrap{max-width:900px;margin:24px auto;padding:0 18px}
+.wrap .top,.wrap header.top{border-radius:0 0 18px 18px}
+.wrap .card,.wrap section.card{background:#fff;border:1px solid #e4e8f1;border-radius:20px;box-shadow:0 5px 20px #34496a08}
+.wrap .title{color:#2c4269;letter-spacing:-.8px}
+.wrap .line{border-bottom:1px dashed #e2e8f2}
+.wrap .grammar{background:#f0f5ff;border:1px solid #e1eaf8}
+.wrap .note{background:#fff7e9;color:#8a7048}
+.wrap .audio-btn,.wrap .listen-btn{border-radius:12px}
+.wrap .bottom-nav{background:#ffffffed;border-top:1px solid #e2e8f2;box-shadow:0 -5px 20px #30456b0b}
+.wrap .bottom-nav a{color:#687790}
+.wrap .bottom-nav a.current{color:#456b9c;font-weight:800}
