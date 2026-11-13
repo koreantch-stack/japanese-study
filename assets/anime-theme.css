@@ -51,3 +51,75 @@ body{background:radial-gradient(circle at 8% 3%,#fff0f4 0,transparent 25rem),rad
 .wrap .bottom-nav{background:#ffffffed;border-top:1px solid #e2e8f2;box-shadow:0 -5px 20px #30456b0b}
 .wrap .bottom-nav a{color:#687790}
 .wrap .bottom-nav a.current{color:#456b9c;font-weight:800}
+
+/* ===== v3: 시안 아이콘 적용 (assets/img) ===== */
+img.jy-icon{width:30px;height:30px;border-radius:9px;object-fit:cover;vertical-align:middle;flex:0 0 30px}
+.nav img.jy-icon{width:30px;height:30px}
+.brand-mark img.jy-icon{width:34px;height:34px;flex-basis:34px;border-radius:11px}
+.mobile img.jy-icon{display:block;margin:0 auto 2px;width:28px;height:28px}
+.fn{width:18px;height:18px;vertical-align:-4px;margin-right:5px;object-fit:contain}
+.ti{width:24px;height:24px;border-radius:7px;vertical-align:middle;margin-right:7px;object-fit:cover}
+
+/* 배너 + 계절 카드 */
+.banner-grid{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1fr);gap:12px;margin-bottom:14px}
+.banner img{display:block;width:100%;height:100%;object-fit:cover;border-radius:20px;box-shadow:0 8px 26px #5d78a01a}
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.seasons img{width:100%;height:100%;object-fit:cover;border-radius:14px;opacity:.82;transition:transform .2s,opacity .2s;box-shadow:0 4px 12px #34496a14}
+.seasons img.now{opacity:1;transform:translateY(-4px);outline:2px solid #fff;box-shadow:0 8px 18px #34496a30}
+
+/* 히어로 */
+#v-home .hero{padding-right:250px}
+#v-home .hero:after{display:none}
+.hero-char{position:absolute;right:18px;bottom:0;width:215px;height:auto;pointer-events:none}
+.jay-hero{background:linear-gradient(100deg,#ffffffee 0%,#ffffffcc 48%,#ffffff40 100%),var(--bgimg) center/cover;padding-right:150px}
+.jay-hero:after{display:none}
+.hero-deco{position:absolute;right:26px;top:10px;height:150px;width:auto;pointer-events:none}
+.strip{display:block;width:100%;height:112px;object-fit:cover;border-radius:18px;margin-bottom:16px;box-shadow:0 5px 18px #34496a14}
+
+/* 등급 · 진행 */
+.goal-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.badges{display:flex;justify-content:space-around;gap:6px;margin:4px 0 14px}
+.bd{text-align:center;flex:1;opacity:.5;filter:grayscale(.6)}
+.bd img{width:min(74px,100%);height:auto}
+.bd small{display:block;font-size:11px;color:var(--muted)}
+.bd.now,.bd.goalb{opacity:1;filter:none}
+.prog-line{display:flex;align-items:center;gap:10px}
+.prog-line .progress{flex:1;height:12px}
+.prog-line b{color:#385f96;min-width:38px;text-align:right}
+#homeBar{transition:width .4s}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #f1e3d2;background:#fffaf3;border-radius:99px;padding:5px 15px 5px 9px;font-size:14px}
+.pill img{height:28px;width:auto}
+.pill b{color:#d9552b;font-size:17px}
+
+/* 상태 태그 */
+.st-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#7b6848;background:#f7f3ea;border-radius:99px;padding:2px 9px 2px 3px;white-space:nowrap}
+.st-tag img{height:26px;width:auto}
+
+/* 학습 단계 캐릭터 */
+.step{display:flex;align-items:center;gap:10px}
+.step-char{margin-left:auto;height:58px;width:auto;flex:0 0 auto}
+.fb{display:flex;align-items:center;gap:12px}
+.fb img{width:84px;height:auto;flex:0 0 84px}
+.empty{text-align:center;padding:6px 0}
+.empty img{width:70px;height:auto}
+.title-deco{height:46px;width:auto;margin-left:12px;vertical-align:middle}
+
+/* 푸터 장식 */
+.deco-row{display:flex;justify-content:center;align-items:flex-end;gap:16px;margin:26px 0 0;opacity:.9}
+.deco-row img{height:54px;width:auto}
+.deco-row img:nth-child(1){height:62px}.deco-row img:nth-child(3){height:46px}.deco-row img:nth-child(5),.deco-row img:nth-child(6){height:36px}
+
+@media(max-width:760px){
+ .banner-grid{grid-template-columns:1fr}
+ .seasons{height:96px}
+ #v-home .hero{padding-right:18px}
+ .hero-char{position:static;display:block;margin:12px 0 -23px auto;width:120px}
+ .jay-hero{padding-right:18px}
+ .hero-deco{height:84px;right:12px;top:8px;opacity:.9}
+ .strip{height:84px}
+ .st-tag span{display:none}.st-tag{padding:0;background:none}.st-tag img{height:30px}
+ .step-char{height:46px}
+ .deco-row{gap:9px}.deco-row img{height:38px}.deco-row img:nth-child(1){height:44px}.deco-row img:nth-child(3){height:32px}.deco-row img:nth-child(5),.deco-row img:nth-child(6){height:26px}
+ .title-deco{height:34px}
+}
