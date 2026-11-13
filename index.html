@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f4ec">
+<meta name="theme-color" content="#f5f7fc">
+<link rel="stylesheet" href="assets/anime-theme.css">
 <title>일본어 공부방 | N5에서 N2까지</title>
 <style>
 :root{--bg:#f6f4ec;--paper:#fffefa;--ink:#24352c;--muted:#718076;--green:#477657;--pale:#e8f0e6;--line:#e3e5d9;--gold:#c08b45;--red:#a34b42}
@@ -19,10 +20,10 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 .board-tools{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0}.board-order{display:flex;gap:5px}.board-pages{display:flex;justify-content:center;align-items:center;gap:5px;flex-wrap:wrap;margin:12px 0 22px}.board-pages .chip:disabled{opacity:.4;cursor:default}.board-pages .chip[aria-current="page"]{font-weight:850}.board-pages .chip{min-width:35px}.board-tools .chip{margin:0}
 </style></head>
 <body><div id="readingPanel" role="dialog" aria-label="글자 크기 설정"><strong>글자 크기</strong><div class="size-options"><button type="button" data-size="normal" onclick="setReadingSize('normal')">보통</button><button type="button" data-size="large" onclick="setReadingSize('large')">크게</button><button type="button" data-size="xlarge" onclick="setReadingSize('xlarge')">아주 크게</button></div><small>설정은 저장되며 모든 학습 페이지에 적용됩니다.</small></div>
-<header class="top"><div class="brand">🌿 일본어 공부방<small>N5부터 N2까지 · 하루 30~40분</small></div><span class="date" id="datePill">오늘의 학습</span><div id="readingSettings"><button type="button" aria-expanded="false" onclick="toggleReadingPanel()">⚙ 설정</button></div></header>
+<header class="top"><div class="brand"><span class="brand-mark"><svg class="jy-icon" aria-hidden="true"><use href="assets/study-icons.svg#jy-book"></use></svg></span><span>일본어 공부방<small>N5부터 N2까지 · 하루 30~40분</small></span></div><span class="date" id="datePill">오늘의 학습</span><div id="readingSettings"><button type="button" aria-expanded="false" onclick="toggleReadingPanel()">⚙ 설정</button></div></header>
 <div class="layout">
 <aside class="side">
-<button class="nav active" data-view="home">⌂　학습 홈</button><button class="nav" data-view="jay">✦　Jay의 일본 생활기</button><button class="nav" data-view="jlpt">📖　JLPT</button><button class="nav" data-view="vocab">◇　단어장</button><button class="nav" data-view="review">↻　복습 · 오답</button><button class="nav" data-view="stats">▥　학습 통계</button>
+<button class="nav active" data-view="home"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-home"></use></svg>학습 홈</button><button class="nav" data-view="jay"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-story"></use></svg>Jay의 일본 생활기</button><button class="nav" data-view="jlpt"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-jlpt"></use></svg>JLPT</button><button class="nav" data-view="vocab"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-vocab"></use></svg>단어장</button><button class="nav" data-view="review"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-refresh"></use></svg>복습 · 오답</button><button class="nav" data-view="stats"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-chart"></use></svg>학습 통계</button>
 <div class="note">🌱 밀린 학습은 오늘의 학습과 분리해 보관해요. 듣기 연습 없이 어휘·문법·독해·문장 만들기에 집중합니다.</div>
 </aside>
 <main>
@@ -80,7 +81,7 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 <section class="view" id="v-stats"><div class="eyebrow">YOUR PROGRESS</div><h1 class="lesson-title">학습 통계</h1><div class="stats"><div class="stat"><small>완료율</small><strong id="rate">0%</strong></div><div class="stat"><small>단어 암기</small><strong id="knownRate">0%</strong></div><div class="stat"><small>누적 오답</small><strong id="wrongCount">0</strong></div></div><div class="card"><div class="progress"><div id="bar"></div></div><p id="progressText" class="muted"></p><button class="btn" onclick="exportData()">학습 기록 내보내기 (.json)</button><p class="muted" style="font-size:12px">현재 학습 기록은 이 브라우저에 저장됩니다. 기기 간 동기화는 아직 지원하지 않습니다.</p></div></section>
 <div class="footer">일본어 공부방 · 개인 학습 기록은 현재 브라우저에 저장됩니다.</div>
 </main></div>
-<nav class="mobile"><button data-view="home">⌂<br>홈</button><button data-view="jay">✦<br>Jay</button><button data-view="jlpt">📖<br>JLPT</button><button data-view="vocab">◇<br>단어장</button><button data-view="review">↻<br>복습</button></nav>
+<nav class="mobile"><button data-view="home"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-home"></use></svg>홈</button><button data-view="jay"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-story"></use></svg>Jay</button><button data-view="jlpt"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-jlpt"></use></svg>JLPT</button><button data-view="vocab"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-vocab"></use></svg>단어장</button><button data-view="review"><svg class="jy-icon"><use href="assets/study-icons.svg#jy-refresh"></use></svg>복습</button></nav>
 <script>
 const KEY='japaneseStudyProgressV2';
 let lessons=[],state={done:[],known:[],wrong:[],quiz:{}},currentId=null,selectedAnswer=null,activeFilter='all',latestId=null,vocabChapterIndex=0;
