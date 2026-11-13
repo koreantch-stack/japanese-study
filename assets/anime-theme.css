@@ -1,0 +1,40 @@
+/* Anime-inspired visual layer: presentation only; learning logic and data stay untouched. */
+:root{--bg:#f5f7fc;--paper:#fff;--ink:#25324b;--muted:#748097;--green:#496c9c;--pale:#eaf2ff;--line:#e2e8f2;--gold:#e8ad58;--red:#d96e7a}
+body{background:radial-gradient(circle at 8% 3%,#fff0f4 0,transparent 25rem),radial-gradient(circle at 95% 15%,#e8f3ff 0,transparent 27rem),var(--bg);color:var(--ink)}
+.top{background:#ffffffeb;border-bottom-color:#e7dfe8;box-shadow:0 3px 18px #31466b0a}
+.brand{display:flex;align-items:center;gap:9px;color:#273b62;letter-spacing:-.5px}
+.brand-mark{width:38px;height:38px;display:inline-grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#ffe5ec,#dcecff);box-shadow:inset 0 0 0 1px #fff}
+.brand small{color:#8490a5}
+.date{background:#eef4ff;color:#456b9c}
+.layout{gap:20px}
+.side,.card,.stat{background:#ffffffed;border-color:#e4e8f1;box-shadow:0 5px 20px #34496a08}
+.side{border-radius:20px}
+.nav{display:flex;align-items:center;gap:10px;color:#66738b;border-radius:13px;padding:11px 12px}
+.nav.active,.nav:hover{background:linear-gradient(100deg,#eaf2ff,#fff0f4);color:#345b91}
+.nav-icon{width:25px;height:25px;flex:0 0 25px}
+.hero{background:linear-gradient(115deg,#e3efff 0%,#fff0f3 58%,#fff8e9 100%);border:1px solid #e5e8f4;box-shadow:0 8px 26px #5d78a00d}
+.hero:after{content:"桜";color:#e58da522;right:25px;top:-33px}
+.eyebrow{color:#5477a8}
+.btn{background:#4c70a4;border-color:#4c70a4;box-shadow:0 3px 9px #4c70a422}
+.btn.secondary{color:#496c9c;background:#fff;border-color:#dce5f2;box-shadow:none}
+.stat{border-radius:16px}
+.stat strong{color:#385f96}
+.section-title{color:#2c4269;letter-spacing:-.5px}
+.card{border-radius:18px}
+.chapter{background:#edf3ff;color:#496c9c}
+.tag{background:#fff2e8;color:#a36f42}
+.grammar{background:#f0f5ff}
+.feedback{background:#edf8f1}
+.feedback.bad{background:#fff0f0;color:#b64f60}
+.chip.active,.option.selected{background:#edf3ff;color:#3d649b;border-color:#9db8df}
+.progress{background:#e7edf7}.progress div{background:linear-gradient(90deg,#6b9ed7,#e78ca4)}
+.note{background:#fff7e9;color:#8a7048}
+.jy-icon{width:26px;height:26px;vertical-align:middle}
+.nav .jy-icon{width:25px;height:25px}
+.mobile .jy-icon{display:block;margin:0 auto 2px;width:23px;height:23px}
+.mobile{background:#fffefef2;border-top-color:#e5e9f1;box-shadow:0 -5px 20px #30456b0b}
+.mobile button.active{color:#456b9c}
+#readingSettings button{border-color:#dce5f2;color:#405f8c;background:#fff}
+#readingPanel{border-color:#dce5f2}
+#readingPanel .size-options button.active{background:#4c70a4;border-color:#4c70a4}
+@media(max-width:760px){.hero{background:linear-gradient(135deg,#e5f0ff,#fff0f4 70%,#fff8e9)}.layout{margin-top:14px}.side,.card,.stat{box-shadow:0 3px 14px #34496a08}}
