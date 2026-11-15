@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ec"><title>EP.10 선반을 조립하다 | Jay's Life in Japan</title>
+<style>
+:root{--bg:#f6f4ec;--paper:#fffefa;--ink:#24352c;--muted:#718076;--green:#477657;--line:#e3e5d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,-apple-system,"Noto Sans KR",sans-serif;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.wrap{max-width:850px;margin:28px auto;padding:0 16px}.top,.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:15px}.top{background:linear-gradient(120deg,#e7eee9,#f3e7d6)}
+.eyebrow{font-size:12px;letter-spacing:1px;color:var(--green);font-weight:800}.title{font-size:clamp(28px,5vw,40px);line-height:1.25;margin:8px 0}.muted,.ko{color:var(--muted)}.jp{font-size:19px;font-weight:650;line-height:1.95}.line{padding:14px 0;border-bottom:1px dashed var(--line)}.line:last-child{border:0}.ko{margin-top:8px}.step{font-size:21px;margin:0 0 12px}
+.table{width:100%;border-collapse:collapse}.table td,.table th{text-align:left;padding:9px 7px;border-bottom:1px solid var(--line)}.table th{font-size:12px;color:var(--muted)}
+.answer{filter:blur(5px);cursor:pointer;display:inline-block;user-select:none;background:#edf1e9;border-radius:6px;padding:1px 6px;transition:filter .18s,background .18s}.answer.show{filter:none;user-select:text;background:transparent}.answer:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.note{background:#f8f1e3;border-radius:11px;padding:12px;color:#796744;font-size:13px;margin-top:12px}.btn{display:inline-block;background:var(--green);color:white;text-decoration:none;border-radius:10px;padding:10px 15px;font:inherit;font-weight:750}.btn.secondary{background:#e8eee7;color:var(--ink);border:1px solid var(--line)}
+.grammar{background:#f0f3e9;border-radius:13px;padding:14px;margin:10px 0}.example{border-top:1px solid #dfe6d9;padding-top:8px;margin-top:8px}.dialogue{padding:12px 0;border-bottom:1px solid var(--line)}.dialogue:last-child{border:0}
+.bottom-nav{position:fixed!important;display:flex!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;z-index:2147483000!important;width:100%!important;max-width:none!important;min-height:62px;justify-content:space-around;align-items:center;gap:2px;padding:7px 4px calc(7px + env(safe-area-inset-bottom));background:#fffefa!important;border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(36,53,44,.10)}
+.bottom-nav a{flex:1;min-width:0;text-align:center;text-decoration:none;color:var(--muted);font-size:11px;line-height:1.35;padding:3px 1px}.bottom-nav a span{display:block;font-size:19px;line-height:1.3;margin-bottom:2px}.bottom-nav a.current{color:var(--green);font-weight:850}
+@media(min-width:761px){.bottom-nav{max-width:850px!important;left:50%!important;right:auto!important;width:calc(100% - 32px)!important;transform:translateX(-50%)!important;border:1px solid var(--line);border-bottom:0;border-radius:16px 16px 0 0}}
+@media(max-width:600px){.wrap{margin:14px auto;padding:0 12px}.top,.card{padding:16px}.jp{font-size:18px}.table td,.table th{padding:8px 4px;font-size:14px}}
+#readingSettings{position:fixed;top:10px;right:12px;z-index:2147483001;font:inherit}#readingSettings button{border:1px solid #d8dfd5;border-radius:999px;background:#fffefa;color:#24352c;padding:8px 12px;font-weight:750;box-shadow:0 2px 10px #24352c18;cursor:pointer}
+#readingPanel{display:none;position:fixed;top:54px;right:12px;z-index:2147483002;width:min(280px,calc(100vw - 24px));padding:14px;background:#fffefa;border:1px solid #d8dfd5;border-radius:14px;box-shadow:0 8px 28px #24352c25;color:#24352c}
+#readingPanel.open{display:block}#readingPanel strong{display:block;margin-bottom:10px}#readingPanel .size-options{display:flex;gap:6px}#readingPanel .size-options button{flex:1;border:1px solid #d8dfd5;border-radius:9px;padding:9px 5px;background:#f2f4ee;color:#24352c;font-size:13px}#readingPanel .size-options button.active{background:#477657;color:white;border-color:#477657}#readingPanel small{display:block;margin-top:9px;color:#718076;font-size:12px}
+html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25}
+@media(max-width:600px){#readingSettings{top:8px;right:8px}#readingSettings button{padding:7px 10px;font-size:13px}}
+</style></head>
+<body><div id="readingSettings"><button type="button" aria-expanded="false" onclick="toggleReadingPanel()">⚙ 설정</button></div><div id="readingPanel" role="dialog" aria-label="글자 크기 설정"><strong>글자 크기</strong><div class="size-options"><button type="button" data-size="normal" onclick="setReadingSize('normal')">보통</button><button type="button" data-size="large" onclick="setReadingSize('large')">크게</button><button type="button" data-size="xlarge" onclick="setReadingSize('xlarge')">아주 크게</button></div><small>설정은 저장되며 모든 학습 페이지에 적용됩니다.</small></div>
+<main class="wrap">
+<header class="top"><div class="eyebrow">JAY'S LIFE IN JAPAN · SEASON 2 · 2026.11.18</div><h1 class="title">EP.10. 선반을 조립하다</h1><p class="muted">棚（たな）を組（く）み立（た）てる · 선반을 조립하다</p><p>어젯밤 택배로 선반을 받은 Jay. 오늘은 상자를 열고 직접 조립하기로 합니다. 그런데 집에 드라이버가 없습니다. 가까운 가게에 다녀온 뒤, 설명서를 보며 조립을 시작합니다.</p><div class="note">JLPT N5 중심 · 약 35분 · 읽기·어휘·문법·회화·미션·쓰기 · 듣기 연습 없음</div></header>
+<section class="card"><h2 class="step">STEP 1 · 이야기 읽기</h2><p class="muted">일본어 원문 아래의 흐린 한국어 직역을 눌러 확인하세요.</p>
+<div class="line"><div class="jp">1. 水曜日（すいようび）の午後（ごご）、ジェイは昨日（きのう）届（とど）いた棚（たな）の箱（はこ）を開（あ）けました。</div><div class="ko answer" tabindex="0" role="button">수요일 오후, Jay는 어제 도착한 선반의 상자를 열었습니다.</div></div>
+<div class="line"><div class="jp">2. 中（なか）には説明書（せつめいしょ）と部品（ぶひん）が入（はい）っていました。</div><div class="ko answer" tabindex="0" role="button">안에는 설명서와 부품이 들어 있었습니다.</div></div>
+<div class="line"><div class="jp">3. ジェイは説明書（せつめいしょ）を見（み）て、ネジの数（かず）を確認（かくにん）しました。</div><div class="ko answer" tabindex="0" role="button">Jay는 설명서를 보고, 나사의 수를 확인했습니다.</div></div>
+<div class="line"><div class="jp">4. 家（いえ）にプラスドライバーがなかったので、近（ちか）くの店（みせ）へ買（か）いに行（い）きました。</div><div class="ko answer" tabindex="0" role="button">집에 십자드라이버가 없었기 때문에, 가까운 가게에 사러 갔습니다.</div></div>
+<div class="line"><div class="jp">5. 家（いえ）に帰（かえ）ってから、床（ゆか）に段（だん）ボールを敷（し）いて、組（く）み立（た）てを始（はじ）めました。</div><div class="ko answer" tabindex="0" role="button">집에 돌아온 다음, 바닥에 골판지를 깔고, 조립을 시작했습니다.</div></div>
+<div class="line"><div class="jp">6. 途中（とちゅう）で板（いた）の向（む）きを間違（まちが）えて、ネジの穴（あな）が合（あ）いませんでした。</div><div class="ko answer" tabindex="0" role="button">도중에 판자의 방향을 잘못해서, 나사 구멍이 맞지 않았습니다.</div></div>
+<div class="line"><div class="jp">7. ジェイは説明書（せつめいしょ）をもう一度（いちど）見（み）て、ネジを少（すこ）しゆるめ、板（いた）の向（む）きを直（なお）しました。</div><div class="ko answer" tabindex="0" role="button">Jay는 설명서를 한 번 더 보고, 나사를 조금 풀고, 판자의 방향을 바로잡았습니다.</div></div>
+<div class="line"><div class="jp">8. ジェイは全部（ぜんぶ）のネジを軽（かる）く仮止（かりど）めしました。</div><div class="ko answer" tabindex="0" role="button">Jay는 모든 나사를 가볍게 임시로 고정했습니다.</div></div>
+<div class="line"><div class="jp">9. それから、ネジを少（すこ）しずつしっかり締（し）めました。</div><div class="ko answer" tabindex="0" role="button">그리고 나사를 조금씩 단단히 조였습니다.</div></div>
+<div class="line"><div class="jp">10. 棚（たな）が完成（かんせい）すると、ジェイは本（ほん）を三冊（さんさつ）置（お）き、部屋（へや）が少（すこ）しきれいになりました。</div><div class="ko answer" tabindex="0" role="button">선반이 완성되자, Jay는 책을 세 권 놓았고, 방이 조금 깔끔해졌습니다.</div></div>
+</section>
+<section class="card"><h2 class="step">STEP 2 · 핵심 어휘 10개</h2><table class="table"><tr><th>일본어</th><th>읽기</th><th>뜻</th></tr>
+<tr><td>棚</td><td>たな</td><td><span class="answer" tabindex="0" role="button">선반</span></td></tr><tr><td>組み立てる</td><td>くみたてる</td><td><span class="answer" tabindex="0" role="button">조립하다</span></td></tr><tr><td>説明書</td><td>せつめいしょ</td><td><span class="answer" tabindex="0" role="button">설명서</span></td></tr><tr><td>部品</td><td>ぶひん</td><td><span class="answer" tabindex="0" role="button">부품</span></td></tr><tr><td>数</td><td>かず</td><td><span class="answer" tabindex="0" role="button">수, 개수</span></td></tr><tr><td>確認する</td><td>かくにんする</td><td><span class="answer" tabindex="0" role="button">확인하다</span></td></tr><tr><td>向き</td><td>むき</td><td><span class="answer" tabindex="0" role="button">방향, 향하는 쪽</span></td></tr><tr><td>間違える</td><td>まちがえる</td><td><span class="answer" tabindex="0" role="button">틀리다, 잘못하다</span></td></tr><tr><td>締める</td><td>しめる</td><td><span class="answer" tabindex="0" role="button">조이다, 잠그다</span></td></tr><tr><td>完成する</td><td>かんせいする</td><td><span class="answer" tabindex="0" role="button">완성하다</span></td></tr>
+</table></section>
+<section class="card"><h2 class="step">STEP 3 · 오늘의 문법 4개</h2>
+<div class="grammar"><b>① 동사 ます형 어간 + に行（い）く · ~하러 가다</b><p>어떤 행동을 목적으로 이동할 때 사용합니다.</p><div class="example"><div class="jp">店（みせ）へドライバーを買（か）いに行（い）きました。</div><div class="ko">가게에 드라이버를 사러 갔습니다.</div></div></div>
+<div class="grammar"><b>② 동사 て형 + から · ~한 다음에</b><p>앞의 행동이 끝난 후 뒤의 행동을 합니다.</p><div class="example"><div class="jp">家（いえ）に帰（かえ）ってから、組（く）み立（た）てます。</div><div class="ko">집에 돌아온 다음, 조립합니다.</div></div></div>
+<div class="grammar"><b>③ 동사 て형으로 동작 연결하기 · ~하고, ~해서</b><p>여러 동작을 자연스럽게 이어서 설명합니다.</p><div class="example"><div class="jp">説明書（せつめいしょ）を見（み）て、確認（かくにん）しました。</div><div class="ko">설명서를 보고, 확인했습니다.</div></div></div>
+<div class="grammar"><b>④ 동사 기본형 + と · ~하면, ~하자</b><p>어떤 일이 일어나면 자연스럽게 뒤의 상황이 이어지는 것을 나타냅니다.</p><div class="example"><div class="jp">棚（たな）が完成（かんせい）すると、部屋（へや）がきれいになりました。</div><div class="ko">선반이 완성되자, 방이 깨끗해졌습니다.</div></div></div>
+</section>
+<section class="card"><h2 class="step">STEP 4 · 생활 회화</h2><p class="muted">다음 날 아침, 포장 상자를 버리러 가다가 이웃 다나카 씨를 만난 상황을 설정한 학습용 창작 대화입니다.</p>
+<div class="dialogue"><b>田中（たなか）さん：</b><div class="jp">大（おお）きい段（だん）ボールですね。</div><div class="ko">큰 골판지 상자네요.</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">はい。昨日（きのう）、棚（たな）を組（く）み立（た）てました。</div><div class="ko">네. 어제 선반을 조립했습니다.</div></div>
+<div class="dialogue"><b>田中（たなか）さん：</b><div class="jp">一人（ひとり）で作（つく）りましたか。</div><div class="ko">혼자 만들었습니까?</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">はい。少（すこ）し難（むずか）しかったですが、できました。</div><div class="ko">네. 조금 어려웠지만, 완성했습니다.</div></div>
+<div class="dialogue"><b>田中（たなか）さん：</b><div class="jp">よかったですね。</div><div class="ko">잘됐네요.</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">ありがとうございます。</div><div class="ko">감사합니다.</div></div>
+</section>
+<section class="card"><h2 class="step">STEP 5 · 일본 생활문화: 조립식 가구</h2>
+<p>일본에서 판매되는 조립식 가구의 설명서에는 부품 번호, 나사 수량, 필요한 공구와 조립 순서가 그림으로 표시되는 경우가 많습니다.</p>
+<p>조립 전에는 부품과 수량을 확인하고, 판자의 앞뒤와 방향을 살펴야 합니다. 여러 나사를 한꺼번에 강하게 조이기보다 설명서의 지시에 따라 먼저 가볍게 고정한 뒤 조금씩 조이는 방식이 유용합니다. 제품별 설명서가 우선입니다.</p>
+<div class="note">「仮止（かりど）め」는 본격적으로 조이기 전에 임시로 고정한다는 뜻입니다. 이번 회차에서는 조립 상황을 설명하기 위해 사용한 생활 어휘입니다.</div>
+<p><a href="https://www.ikea.com/jp/ja/customer-service/product-support/assembly-guides/" target="_blank" rel="noopener">IKEA 일본 공식 조립 안내</a></p>
+</section>
+<section class="card"><h2 class="step">STEP 6 · 상황 선택 미션</h2>
+<p><b>상황 1:</b> 가구 조립을 시작하기 전에 가장 먼저 할 일은?</p><div class="grammar"><p>A. 설명서를 확인하고 부품 수량을 살펴본다.</p><p>B. 나사를 전부 강하게 조인다.</p><p>C. 설명서를 버린다.</p><p class="answer" tabindex="0" role="button">정답: A</p></div>
+<p><b>상황 2:</b> 나사 구멍이 맞지 않습니다. 어떻게 해야 할까요?</p><div class="grammar"><p>A. 힘으로 나사를 밀어 넣는다.</p><p>B. 판자의 방향과 설명서를 다시 확인한다.</p><p>C. 다른 부품을 아무거나 끼운다.</p><p class="answer" tabindex="0" role="button">정답: B</p></div>
+<p><b>상황 3:</b> 나사를 여러 개 조립할 때 적절한 방법은?</p><div class="grammar"><p>A. 나사 하나를 처음부터 끝까지 강하게 조인다.</p><p>B. 모든 나사를 가볍게 임시 고정한 뒤 조금씩 조인다.</p><p>C. 나사를 끝까지 조이지 않는다.</p><p class="answer" tabindex="0" role="button">정답: B</p></div>
+</section>
+<section class="card"><h2 class="step">STEP 7 · 직접 문장 만들기</h2>
+<div class="line"><b>1. 설명서를 보고 나사의 수를 확인했습니다.</b><p class="answer" tabindex="0" role="button">説明書（せつめいしょ）を見（み）て、ネジの数（かず）を確認（かくにん）しました。</p><p class="muted">해설: 見て는 보고, 確認しました는 확인했습니다라는 뜻입니다.</p></div>
+<div class="line"><b>2. 가까운 가게에 드라이버를 사러 갔습니다.</b><p class="answer" tabindex="0" role="button">近（ちか）くの店（みせ）へドライバーを買（か）いに行（い）きました。</p><p class="muted">해설: 동사 ます형 어간 + に行く는 ~하러 가다라는 뜻입니다.</p></div>
+<div class="line"><b>3. 집에 돌아온 다음 조립을 시작했습니다.</b><p class="answer" tabindex="0" role="button">家（いえ）に帰（かえ）ってから、組（く）み立（た）てを始（はじ）めました。</p><p class="muted">해설: 帰ってから는 돌아온 다음이라는 뜻입니다.</p></div>
+</section>
+<section class="card"><h2 class="step">다음 이야기 · EP.11</h2><b>슈퍼마켓에서 장을 보다</b><p class="muted">선반을 완성한 Jay. 방을 정리하다 보니 생활용품이 몇 가지 부족하다는 사실을 알게 됩니다. 다음 날, 슈퍼마켓에서 가격표와 할인 스티커를 살펴봅니다.</p><a class="btn" href="index.html?tab=jay">Jay 연재 목록</a> <a class="btn secondary" href="jay-ep09.html">EP.09 택배 이야기</a></section>
+</main>
+<nav class="bottom-nav" aria-label="주요 메뉴"><a href="index.html?tab=home"><span>⌂</span>홈</a><a href="index.html?tab=jay" class="current" aria-current="page"><span>✦</span>Jay</a><a href="index.html?tab=jlpt"><span>▤</span>JLPT</a><a href="index.html?tab=archive"><span>▦</span>챕터</a><a href="index.html?tab=vocab"><span>◇</span>단어장</a><a href="index.html?tab=review"><span>↻</span>복습</a></nav>
+<script>
+function toggleAnswer(el){const visible=el.classList.toggle('show');el.setAttribute('aria-pressed',String(visible));el.title=visible?'다시 눌러 가리기':'눌러서 뜻 또는 정답 보기'}
+document.querySelectorAll('.answer').forEach(el=>{el.addEventListener('click',()=>toggleAnswer(el));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleAnswer(el)}})});
+(function(){const key='jayReadingSize';function apply(v){const h=document.documentElement;h.classList.remove('reading-large','reading-xlarge');if(v==='large')h.classList.add('reading-large');if(v==='xlarge')h.classList.add('reading-xlarge');document.querySelectorAll('#readingPanel [data-size]').forEach(b=>b.classList.toggle('active',b.dataset.size===v));}window.setReadingSize=function(v){localStorage.setItem(key,v);apply(v)};window.toggleReadingPanel=function(){const p=document.getElementById('readingPanel');p.classList.toggle('open');document.querySelector('#readingSettings button').setAttribute('aria-expanded',p.classList.contains('open')?'true':'false')};const v=localStorage.getItem(key)||'normal';apply(v);})();
+</script></body></html>
