@@ -187,13 +187,14 @@ function renderMockScene(scene){
   'birthday':['🎁','🎂','😊','생일 선물을 건네는 상황'],'restaurant':['🍽️','🧾','🙋','식사를 마치고 계산하는 상황'],
   'sick':['🤒','🏥','💊','아픈 친구에게 말을 건네는 상황'],'return-home':['🚪','🏠','👋','집에 돌아온 상황'],
   'introduce':['🧑','🤝','🧑','처음 만난 사람에게 자기소개하는 상황'],'classroom':['👩‍🏫','📚','🙋','수업 중 다시 말해 달라고 부탁하는 상황'],
-  'leave-office':['🏢','🧑‍💼','👋','직장에서 먼저 퇴근하는 상황'],'meal':['🍚','🥢','🙇','식사를 시작하는 상황'],
+  'leave-office':['🏢','🧑‍💼','👋','직장에서 먼저 퇴근하는 상황'],'meal':['🍚','🥢','🙇','식사를 시작하는 상황'],'morning-neighbor':['🌅','🧍','👋','아침에 이웃을 만난 상황'],
   'late':['🕒','🏃','🙇','약속 시간에 늦은 상황'],'leave-home':['🚪','🎒','👋','집에서 외출하는 상황'],
   'receive-gift':['🎁','😊','🙏','선물을 받은 상황']
  };
  const x=scenes[scene]||['🧍','💬','🧑','상황을 보고 자연스러운 말을 고르는 문제'];
  return '<div class="mock-scene" role="img" aria-label="'+escapeMockText(x[3])+'"><div class="mock-scene-icons">'+x.slice(0,3).map(v=>'<span>'+v+'</span>').join('')+'</div><small>'+escapeMockText(x[3])+'</small></div>';
 }
+function mockTypeLabel(type){const labels={'漢字読み':'한자 읽기','表記':'표기','文脈規定':'문맥 규정','言い換え類義':'유의어','文の文法1（文法形式の判断）':'문법 형식 선택','文の文法2（文の組み立て）':'문장 배열','文章の文法':'글 문법','内容理解（短文）':'단문 독해','内容理解（中文）':'중문 독해','情報検索':'정보 검색','課題理解':'과제 이해','ポイント理解':'핵심 내용 이해','発話表現':'발화 표현','即時応答':'즉시 응답'};return (labels[type]||type)+' · '+type;}
 function mockPrompt(q){
  const source=String(q.question||'');
  const match=source.match(/下線部「([^」]+)」/);
@@ -253,7 +254,7 @@ function playMockAudio(id){
  if(!q||!q.audio||mockState.played[id])return;
  if(!('speechSynthesis'in window)){alert('이 브라우저에서는 음성 재생을 지원하지 않습니다.');return;}
  speechSynthesis.cancel();
- const btn=document.querySelector('#mockq-'+CSS.escape(id)+' .mock-audio-btn');
+ const btn=document.getElementById('mockq-'+id)?.querySelector('.mock-audio-btn');
  if(btn){btn.disabled=true;btn.textContent='▶ 재생 중…';}
  mockState.played[id]=true;
  const u=new SpeechSynthesisUtterance(q.audio);
@@ -261,7 +262,7 @@ function playMockAudio(id){
  const voices=speechSynthesis.getVoices();
  const voice=voices.find(x=>x.lang&&x.lang.toLowerCase().startsWith('ja'));
  if(voice)u.voice=voice;
- u.onend=()=>{const b=document.querySelector('#mockq-'+CSS.escape(id)+' .mock-audio-btn');if(b)b.textContent='✓ 음성 재생 완료';};
+ u.onend=()=>{const b=document.getElementById('mockq-'+id)?.querySelector('.mock-audio-btn');if(b)b.textContent='✓ 음성 재생 완료';};
  u.onerror=()=>{const b=document.querySelector('#mockq-'+CSS.escape(id)+' .mock-audio-btn');if(b){b.disabled=false;b.textContent='🔊 다시 재생';}delete mockState.played[id];};
  speechSynthesis.speak(u);
 }
