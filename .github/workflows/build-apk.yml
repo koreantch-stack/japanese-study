@@ -35,4 +35,5 @@ jobs:
         run: |
           cp android/app/build/outputs/apk/release/app-release.apk japanese-study.apk
           gh release delete apk --yes --cleanup-tag || true
-          gh release create apk japanese-study.apk --title "일본어 공부방 APK" --notes "휴대폰에서 japanese-study.apk 를 내려받아 설치하세요. 사이트를 고치면 앱에도 바로 반영됩니다."
+          printf 'versionCode=%s\n휴대폰에서 japanese-study.apk 를 내려받아 설치하세요. 사이트를 고치면 앱에도 바로 반영됩니다.\n' "$GITHUB_RUN_NUMBER" > notes.txt
+          gh release create apk japanese-study.apk --title "일본어 공부방 APK" --notes-file notes.txt
