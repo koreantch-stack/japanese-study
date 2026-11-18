@@ -2,7 +2,10 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f5f7fc">
+<meta name="theme-color" content="#477657">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/app/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/app/icon-192.png">
 
 <title>일본어 공부방 | N5에서 N2까지</title>
 <style>
@@ -305,4 +308,7 @@ function exportData(){const a=document.createElement('a'),u=URL.createObjectURL(
 init();
 </script><script>
 (function(){const key='jayReadingSize';function apply(v){const h=document.documentElement;h.classList.remove('reading-large','reading-xlarge');if(v==='large')h.classList.add('reading-large');if(v==='xlarge')h.classList.add('reading-xlarge');document.querySelectorAll('#readingPanel [data-size]').forEach(b=>b.classList.toggle('active',b.dataset.size===v));}window.setReadingSize=function(v){localStorage.setItem(key,v);apply(v)};window.toggleReadingPanel=function(){const p=document.getElementById('readingPanel');p.classList.toggle('open');document.querySelector('#readingSettings button').setAttribute('aria-expanded',p.classList.contains('open')?'true':'false')};const v=localStorage.getItem(key)||'normal';apply(v);})();
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+</script>
+</body></html>
