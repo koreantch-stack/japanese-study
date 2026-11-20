@@ -91,37 +91,45 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 </nav>
 <script>
 function toggleAnswer(el){const visible=el.classList.toggle('show');el.setAttribute('aria-pressed',String(visible));el.title=visible?'다시 눌러 가리기':'눌러서 뜻 또는 정답 보기'}
-document.querySelectorAll('.answer').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleAnswer(el)}})});
-(function(){const key='jayReadingSize';function apply(v){const h=document.documentElement;h.classList.remove('reading-large','reading-xlarge');if(v==='large')h.classList.add('reading-large');if(v==='xlarge')h.classList.add('reading-xlarge');document.querySelectorAll('#readingPanel [data-size]').forEach(b=>b.classList.toggle('active',b.dataset.size===v));}window.setReadingSize=function(v){localStorage.setItem(key,v);apply(v)};window.toggleReadingPanel=function(){const p=document.getElementById('readingPanel');p.classList.toggle('open');document.querySelector('#readingSettings button').setAttribute('aria-expanded',p.classList.contains('open')?'true':'false')};const v=localStorage.getItem(key)||'normal';apply(v);})();
-
+document.querySelectorAll('.answer').forEach(el=>{el.addEventListener('click',()=>toggleAnswer(el));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleAnswer(el)}})});
 (function(){
- const storySection=[...document.querySelectorAll('section.card')].find(s=>s.querySelector('.step')?.textContent.includes('STEP 1'));
- if(!storySection)return;
+ const root=[...document.querySelectorAll('section.card')].find(s=>s.querySelector('.step')?.textContent.includes('STEP 1'));
+ if(!root)return;
  const synth=window.speechSynthesis,status=document.getElementById('audioStatus');
- let currentButton=null,queueToken=0;
- function clean(t){return (t||'').replace(/（[ぁ-ゖァ-ヺー]+）/g,'').replace(/\s+/g,' ').trim();}
- function setStatus(t){if(status)status.textContent=t;}
- function resetButton(){if(currentButton){currentButton.classList.remove('active');currentButton.textContent='🔊 문장 듣기';currentButton=null;}}
- function stopJapanese(){queueToken++;if(synth)synth.cancel();resetButton();setStatus('재생을 정지했습니다.');}
- function getVoice(){const vs=synth.getVoices();return vs.find(v=>v.lang&&v.lang.toLowerCase()==='ja-jp')||vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ja'))||null;}
- function playOne(button){
-  if(!('speechSynthesis'in window)){setStatus('이 브라우저에서는 음성 읽기를 지원하지 않습니다.');return;}
-  if(currentButton===button&&synth.speaking){stopJapanese();return;}
-  queueToken++;synth.cancel();resetButton();currentButton=button;button.classList.add('active');button.textContent='■ 재생 중 · 정지';setStatus('일본어 문장을 재생하고 있습니다.');
-  const u=new SpeechSynthesisUtterance(clean(button.dataset.voice));u.lang='ja-JP';u.rate=0.82;const v=getVoice();if(v)u.voice=v;
-  u.onend=()=>{if(currentButton===button)resetButton();setStatus('문장 재생이 끝났습니다.');};
-  u.onerror=()=>{resetButton();setStatus('음성을 재생하지 못했습니다. 기기의 일본어 음성 설정을 확인해 주세요.');};synth.speak(u);
+ let current=null,token=0;
+ const supported=!!synth&&typeof window.SpeechSynthesisUtterance==='function';
+ function clean(t){return(t||'').replace(/（[ぁ-ゖァ-ヺー]+）/g,'').replace(/\s+/g,' ').trim()}
+ function voice(){const list=synth.getVoices();return list.find(v=>/^ja(-|_)?jp$/i.test(v.lang))||list.find(v=>/^ja/i.test(v.lang))||null}
+ function reset(){if(current){current.classList.remove('active');current.textContent='🔊 문장 듣기';current=null}}
+ function stopJapanese(){token++;if(supported){synth.cancel();synth.resume()}reset();if(status)status.textContent='재생을 정지했습니다.'}
+ function speak(text,onend,onerror){
+   const u=new SpeechSynthesisUtterance(clean(text));u.lang='ja-JP';u.rate=.82;
+   const selected=voice();if(selected)u.voice=selected;
+   u.onend=()=>{if(onend)onend()};
+   u.onerror=e=>{if(onerror)onerror(e)};
+   synth.resume();
+   window.setTimeout(()=>{try{synth.speak(u)}catch(e){if(onerror)onerror(e)}},100);
+ }
+ function unavailable(){if(status)status.textContent='이 환경에서 음성 읽기를 사용할 수 없습니다. Chrome에서 페이지를 열거나 Android 일본어 음성 데이터를 확인해 주세요.'}
+ function playOne(b){
+   if(!supported){unavailable();return}
+   if(current===b&&synth.speaking){stopJapanese();return}
+   token++;const t=token;synth.cancel();synth.resume();reset();
+   current=b;b.classList.add('active');b.textContent='■ 재생 중 · 정지';
+   if(status)status.textContent='일본어 문장을 재생합니다.';
+   speak(b.dataset.voice,()=>{if(t===token){reset();status.textContent='문장 재생이 끝났습니다.'}},()=>{if(t===token){reset();status.textContent='음성 재생 오류. Chrome 또는 Android의 일본어 TTS 음성 설정을 확인해 주세요.'}});
  }
  function playWholeStory(){
-  if(!('speechSynthesis'in window)){setStatus('이 브라우저에서는 음성 읽기를 지원하지 않습니다.');return;}
-  stopJapanese();const token=queueToken,lines=[...storySection.querySelectorAll('.line .jp')].map(e=>clean(e.textContent)).filter(Boolean);
-  if(!lines.length){setStatus('재생할 일본어 문장을 찾지 못했습니다.');return;}
-  let i=0;setStatus('이야기 전체를 순서대로 재생합니다.');
-  function next(){if(token!==queueToken||i>=lines.length){if(token===queueToken)setStatus('전체 이야기 재생이 끝났습니다.');return;}
-   const u=new SpeechSynthesisUtterance(lines[i++]);u.lang='ja-JP';u.rate=0.82;const v=getVoice();if(v)u.voice=v;u.onend=next;u.onerror=()=>setStatus('음성 재생 중 오류가 발생했습니다.');synth.speak(u);}
-  next();
+   if(!supported){unavailable();return}
+   stopJapanese();const t=token,lines=[...root.querySelectorAll('.line .jp')].map(x=>clean(x.textContent)).filter(Boolean);let i=0;
+   if(status)status.textContent='이야기 전체를 순서대로 재생합니다.';
+   function next(){if(t!==token)return;if(i>=lines.length){status.textContent='전체 이야기 재생이 끝났습니다.';return}
+     speak(lines[i++],next,()=>{if(t===token)status.textContent='음성 재생 오류. Chrome 또는 Android의 일본어 TTS 음성 설정을 확인해 주세요.'});
+   }
+   next();
  }
- storySection.querySelectorAll('.sentence-audio').forEach(b=>b.addEventListener('click',()=>playOne(b)));
+ root.querySelectorAll('.sentence-audio').forEach(b=>b.addEventListener('click',()=>playOne(b)));
  window.playWholeStory=playWholeStory;window.stopJapanese=stopJapanese;
+ if(supported&&status)synth.addEventListener?.('voiceschanged',()=>{const v=voice();if(v)status.textContent='일본어 음성 준비 완료 · '+v.name});
 })();
 </script></body></html>
