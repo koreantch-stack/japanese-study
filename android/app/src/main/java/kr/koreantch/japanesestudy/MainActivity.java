@@ -16,12 +16,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import androidx.webkit.WebViewCompat;
+import androidx.webkit.WebViewFeature;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,7 +42,7 @@ public class MainActivity extends Activity {
 
     private static final String TTS_SHIM = """
 (function(){
-  if(!window.AndroidTTS||window.__ttsShim)return;
+  if(window.__ttsShim)return;
   window.__ttsShim=true;
   var cbs={},seq=0;
   window.__ttsDone=function(id,err){
@@ -62,6 +66,7 @@ public class MainActivity extends Activity {
   };
   try{Object.defineProperty(window,'speechSynthesis',{value:synth,configurable:true,writable:true});}catch(e){window.speechSynthesis=synth;}
   try{window.SpeechSynthesisUtterance=U;}catch(e){}
+  window.addEventListener('pagehide',function(){try{synth.cancel();}catch(e){}});
 })();
 """;
 
@@ -129,11 +134,16 @@ public class MainActivity extends Activity {
             }
         });
         web.addJavascriptInterface(new TtsBridge(), "AndroidTTS");
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+            WebViewCompat.addDocumentStartJavaScript(web, TTS_SHIM,
+                    Collections.singleton("https://" + HOST));
+        }
 
         web.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
+                if (tts != null) tts.stop();
                 view.evaluateJavascript(TTS_SHIM, null);
             }
 
