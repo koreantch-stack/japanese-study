@@ -22,21 +22,24 @@
 html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25}
 @media(max-width:600px){#readingSettings{top:8px;right:8px}#readingSettings button{padding:7px 10px;font-size:13px}}
 .bottom-nav a span.jy-ni{display:block;height:30px;margin-bottom:1px}.bottom-nav a span.jy-ni img{width:30px;height:30px;object-fit:contain;display:inline-block;vertical-align:top}#jyListBtn{position:fixed;top:10px;left:12px;z-index:2147483001;border:1px solid #d8dfd5;border-radius:999px;background:#fffefa;color:#24352c;padding:8px 14px;font:inherit;font-weight:750;text-decoration:none;box-shadow:0 2px 10px #24352c18;line-height:1.4}@media(max-width:600px){#jyListBtn{top:8px;left:8px;padding:7px 12px;font-size:13px}}
+
+.audio-tools{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.audio-btn{display:inline-block;border:0;background:var(--green);color:#fff;border-radius:10px;padding:10px 15px;font:inherit;font-weight:750;cursor:pointer}.audio-btn.secondary{background:#e8eee7;color:var(--ink);border:1px solid var(--line)}.audio-btn.small{padding:6px 10px;font-size:13px;margin:8px 0 2px}.audio-btn:focus-visible{outline:3px solid #c39b52;outline-offset:2px}.audio-status{font-size:13px;color:var(--muted);margin:4px 0 10px}.sentence-audio.active{background:#b55a42;color:#fff}
 </style><link rel="stylesheet" href="assets/anime-theme.css?v=2"></head><body><a id="jyListBtn" href="index.html?tab=jay" aria-label="Jay 에피소드 목록으로">☰ 목록</a><div id="readingSettings"><button type="button" aria-expanded="false" onclick="toggleReadingPanel()">⚙ 설정</button></div><div id="readingPanel" role="dialog" aria-label="글자 크기 설정"><strong>글자 크기</strong><div class="size-options"><button type="button" data-size="normal" onclick="setReadingSize('normal')">보통</button><button type="button" data-size="large" onclick="setReadingSize('large')">크게</button><button type="button" data-size="xlarge" onclick="setReadingSize('xlarge')">아주 크게</button></div><small>설정은 저장되며 모든 학습 페이지에 적용됩니다.</small></div>
 <main class="wrap">
-<header class="top"><div class="eyebrow">JAY'S LIFE IN JAPAN · SEASON 1 · 2026.11.12</div><h1 class="title">EP.04. 동네를 둘러보다</h1><p class="muted">ごみの出（だ）し方（かた）を知（し）る · 쓰레기 배출 방법을 알다</p><p>EP.03 다음 날 아침. Jay는 전날 장을 보며 나온 포장 용기를 정리하려다가 쓰레기를 어디에, 언제 내놓아야 할지 모른다는 사실을 깨닫습니다. 그때 옆집 이웃을 처음 만납니다.</p><div class="note">JLPT N5 중심 · 약 35~40분 · 읽기 8분 · 어휘 6분 · 문법 8분 · 생활 회화 5분 · 미션과 쓰기 8분 · 듣기 연습 없음</div></header>
+<header class="top"><div class="eyebrow">JAY'S LIFE IN JAPAN · SEASON 1 · 2026.11.12</div><h1 class="title">EP.04. 동네를 둘러보다</h1><p class="muted">ごみの出（だ）し方（かた）を知（し）る · 쓰레기 배출 방법을 알다</p><p>EP.03 다음 날 아침. Jay는 전날 장을 보며 나온 포장 용기를 정리하려다가 쓰레기를 어디에, 언제 내놓아야 할지 모른다는 사실을 깨닫습니다. 그때 옆집 이웃을 처음 만납니다.</p><div class="note">JLPT N5 중심 · 약 35~40분 · 읽기 8분 · 어휘 6분 · 문법 8분 · 생활 회화 5분 · 미션과 쓰기 8분 · 선택형 일본어 원문 음성 제공 · 듣기 시험 없음</div></header>
 
 <section class="card"><h2 class="step">STEP 1 · 이야기 읽기</h2><p class="muted">일본어 문장을 먼저 읽어 보세요. 각 문장 아래 흐리게 가려진 한국어 직역을 누르면 뜻이 나타납니다. 다시 누르면 가려집니다.</p>
-<div class="line"><div class="jp">① 次（つぎ）の日（ひ）の朝（あさ）、ジェイは昨日（きのう）買（か）った物（もの）の容器（ようき）や袋（ふくろ）を持（も）って、建物（たてもの）の入口（いりぐち）へ行（い）きました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">다음 날 아침, 제이는 어제 산 물건의 용기나 봉투를 가지고 건물 입구로 갔습니다.</div></div>
-<div class="line"><div class="jp">② でも、ごみを出（だ）す場所（ばしょ）が分（わ）かりませんでした。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">하지만, 쓰레기를 내놓는 장소를 알 수 없었습니다.</div></div>
-<div class="line"><div class="jp">③ 入口（いりぐち）の近（ちか）くに、小（ちい）さな案内（あんない）がありました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">입구 가까이에, 작은 안내문이 있었습니다.</div></div>
-<div class="line"><div class="jp">④ そこには「ごみは決（き）められた日（ひ）に、決（き）められた場所（ばしょ）へ出（だ）してください」と書（か）いてありました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">거기에는 “쓰레기는 정해진 날에, 정해진 장소에 내놓아 주세요”라고 적혀 있었습니다.</div></div>
-<div class="line"><div class="jp">⑤ ジェイは曜日（ようび）の表（ひょう）を見（み）ましたが、どのごみをいつ出（だ）すのか、よく分（わ）かりませんでした。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 요일 표를 보았지만, 어떤 쓰레기를 언제 내놓는지 잘 알지 못했습니다.</div></div>
-<div class="line"><div class="jp">⑥ そのとき、隣（となり）の部屋（へや）から人（ひと）が出（で）てきました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그때, 옆방에서 사람이 나왔습니다.</div></div>
-<div class="line"><div class="jp">⑦ その人（ひと）は「はじめまして。隣（となり）の田中（たなか）です。何（なに）か困（こま）っていますか」と言（い）いました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그 사람은 “처음 뵙겠습니다. 옆집의 다나카입니다. 무언가 곤란한 일이 있습니까?”라고 말했습니다.</div></div>
-<div class="line"><div class="jp">⑧ ジェイは「はじめまして。韓国（かんこく）から来（き）ました。ごみの出（だ）し方（かた）が分（わ）かりません。教（おし）えてください」と言（い）いました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 “처음 뵙겠습니다. 한국에서 왔습니다. 쓰레기를 내놓는 방법을 모르겠습니다. 가르쳐 주세요.”라고 말했습니다.</div></div>
-<div class="line"><div class="jp">⑨ 田中（たなか）さんは市（し）の分別表（ぶんべつひょう）を見（み）せて、「この町（まち）では、ごみの種類（しゅるい）で出（だ）す日（ひ）が違（ちが）いますよ」と説明（せつめい）しました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">다나카 씨는 시의 분리수거표를 보여 주고, “이 동네에서는 쓰레기의 종류에 따라 내놓는 날이 달라요.”라고 설명했습니다.</div></div>
-<div class="line"><div class="jp">⑩ ジェイはスマートフォンで市（し）の案内（あんない）を開（ひら）き、「ありがとうございます。これからは、この表（ひょう）を見（み）ます」と言（い）いました。</div><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 스마트폰으로 시의 안내를 열고, “감사합니다. 이제부터는 이 표를 보겠습니다.”라고 말했습니다.</div></div>
+<div class="audio-tools"><button class="audio-btn" type="button" onclick="playWholeStory()">▶ 전체 듣기</button><button class="audio-btn secondary" type="button" onclick="stopJapanese()">■ 듣기 정지</button></div><p id="audioStatus" class="audio-status" aria-live="polite">일본어 원문 음성 선택 재생 · 듣기 시험 없음</p>
+<div class="line"><div class="jp">① 次（つぎ）の日（ひ）の朝（あさ）、ジェイは昨日（きのう）買（か）った物（もの）の容器（ようき）や袋（ふくろ）を持（も）って、建物（たてもの）の入口（いりぐち）へ行（い）きました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="次の日の朝、ジェイは昨日買った物の容器や袋を持って、建物の入口へ行きました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">다음 날 아침, 제이는 어제 산 물건의 용기나 봉투를 가지고 건물 입구로 갔습니다.</div></div>
+<div class="line"><div class="jp">② でも、ごみを出（だ）す場所（ばしょ）が分（わ）かりませんでした。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="でも、ごみを出す場所が分かりませんでした。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">하지만, 쓰레기를 내놓는 장소를 알 수 없었습니다.</div></div>
+<div class="line"><div class="jp">③ 入口（いりぐち）の近（ちか）くに、小（ちい）さな案内（あんない）がありました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="入口の近くに、小さな案内がありました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">입구 가까이에, 작은 안내문이 있었습니다.</div></div>
+<div class="line"><div class="jp">④ そこには「ごみは決（き）められた日（ひ）に、決（き）められた場所（ばしょ）へ出（だ）してください」と書（か）いてありました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="そこには「ごみは決められた日に、決められた場所へ出してください」と書いてありました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">거기에는 “쓰레기는 정해진 날에, 정해진 장소에 내놓아 주세요”라고 적혀 있었습니다.</div></div>
+<div class="line"><div class="jp">⑤ ジェイは曜日（ようび）の表（ひょう）を見（み）ましたが、どのごみをいつ出（だ）すのか、よく分（わ）かりませんでした。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="ジェイは曜日の表を見ましたが、どのごみをいつ出すのか、よく分かりませんでした。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 요일 표를 보았지만, 어떤 쓰레기를 언제 내놓는지 잘 알지 못했습니다.</div></div>
+<div class="line"><div class="jp">⑥ そのとき、隣（となり）の部屋（へや）から人（ひと）が出（で）てきました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="そのとき、隣の部屋から人が出てきました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그때, 옆방에서 사람이 나왔습니다.</div></div>
+<div class="line"><div class="jp">⑦ その人（ひと）は「はじめまして。隣（となり）の田中（たなか）です。何（なに）か困（こま）っていますか」と言（い）いました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="その人は「はじめまして。隣の田中です。何か困っていますか」と言いました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그 사람은 “처음 뵙겠습니다. 옆집의 다나카입니다. 무언가 곤란한 일이 있습니까?”라고 말했습니다.</div></div>
+<div class="line"><div class="jp">⑧ ジェイは「はじめまして。韓国（かんこく）から来（き）ました。ごみの出（だ）し方（かた）が分（わ）かりません。教（おし）えてください」と言（い）いました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="ジェイは「はじめまして。韓国から来ました。ごみの出し方が分かりません。教えてください」と言いました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 “처음 뵙겠습니다. 한국에서 왔습니다. 쓰레기를 내놓는 방법을 모르겠습니다. 가르쳐 주세요.”라고 말했습니다.</div></div>
+<div class="line"><div class="jp">⑨ 田中（たなか）さんは市（し）の分別表（ぶんべつひょう）を見（み）せて、「この町（まち）では、ごみの種類（しゅるい）で出（だ）す日（ひ）が違（ちが）いますよ」と説明（せつめい）しました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="田中さんは市の分別表を見せて、「この町では、ごみの種類で出す日が違いますよ」と説明しました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">다나카 씨는 시의 분리수거표를 보여 주고, “이 동네에서는 쓰레기의 종류에 따라 내놓는 날이 달라요.”라고 설명했습니다.</div></div>
+<div class="line"><div class="jp">⑩ ジェイはスマートフォンで市（し）の案内（あんない）を開（ひら）き、「ありがとうございます。これからは、この表（ひょう）を見（み）ます」と言（い）いました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="ジェイはスマートフォンで市の案内を開き、「ありがとうございます。これからは、この表を見ます」と言いました。" aria-label="일본어 문장 듣기">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">제이는 스마트폰으로 시의 안내를 열고, “감사합니다. 이제부터는 이 표를 보겠습니다.”라고 말했습니다.</div></div>
 </section>
 
 <section class="card"><h2 class="step">STEP 2 · 핵심 어휘 10개</h2><p class="muted">읽기를 확인한 뒤, 흐리게 가려진 뜻을 하나씩 눌러 보세요.</p><table class="table"><tr><th>일본어</th><th>읽기</th><th>뜻</th></tr>
@@ -90,4 +93,35 @@ html{--reading-zoom:1}html.reading-large{zoom:1.12}html.reading-xlarge{zoom:1.25
 function toggleAnswer(el){const visible=el.classList.toggle('show');el.setAttribute('aria-pressed',String(visible));el.title=visible?'다시 눌러 가리기':'눌러서 뜻 또는 정답 보기'}
 document.querySelectorAll('.answer').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleAnswer(el)}})});
 (function(){const key='jayReadingSize';function apply(v){const h=document.documentElement;h.classList.remove('reading-large','reading-xlarge');if(v==='large')h.classList.add('reading-large');if(v==='xlarge')h.classList.add('reading-xlarge');document.querySelectorAll('#readingPanel [data-size]').forEach(b=>b.classList.toggle('active',b.dataset.size===v));}window.setReadingSize=function(v){localStorage.setItem(key,v);apply(v)};window.toggleReadingPanel=function(){const p=document.getElementById('readingPanel');p.classList.toggle('open');document.querySelector('#readingSettings button').setAttribute('aria-expanded',p.classList.contains('open')?'true':'false')};const v=localStorage.getItem(key)||'normal';apply(v);})();
+
+(function(){
+ const storySection=[...document.querySelectorAll('section.card')].find(s=>s.querySelector('.step')?.textContent.includes('STEP 1'));
+ if(!storySection)return;
+ const synth=window.speechSynthesis,status=document.getElementById('audioStatus');
+ let currentButton=null,queueToken=0;
+ function clean(t){return (t||'').replace(/（[ぁ-ゖァ-ヺー]+）/g,'').replace(/\s+/g,' ').trim();}
+ function setStatus(t){if(status)status.textContent=t;}
+ function resetButton(){if(currentButton){currentButton.classList.remove('active');currentButton.textContent='🔊 문장 듣기';currentButton=null;}}
+ function stopJapanese(){queueToken++;if(synth)synth.cancel();resetButton();setStatus('재생을 정지했습니다.');}
+ function getVoice(){const vs=synth.getVoices();return vs.find(v=>v.lang&&v.lang.toLowerCase()==='ja-jp')||vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ja'))||null;}
+ function playOne(button){
+  if(!('speechSynthesis'in window)){setStatus('이 브라우저에서는 음성 읽기를 지원하지 않습니다.');return;}
+  if(currentButton===button&&synth.speaking){stopJapanese();return;}
+  queueToken++;synth.cancel();resetButton();currentButton=button;button.classList.add('active');button.textContent='■ 재생 중 · 정지';setStatus('일본어 문장을 재생하고 있습니다.');
+  const u=new SpeechSynthesisUtterance(clean(button.dataset.voice));u.lang='ja-JP';u.rate=0.82;const v=getVoice();if(v)u.voice=v;
+  u.onend=()=>{if(currentButton===button)resetButton();setStatus('문장 재생이 끝났습니다.');};
+  u.onerror=()=>{resetButton();setStatus('음성을 재생하지 못했습니다. 기기의 일본어 음성 설정을 확인해 주세요.');};synth.speak(u);
+ }
+ function playWholeStory(){
+  if(!('speechSynthesis'in window)){setStatus('이 브라우저에서는 음성 읽기를 지원하지 않습니다.');return;}
+  stopJapanese();const token=queueToken,lines=[...storySection.querySelectorAll('.line .jp')].map(e=>clean(e.textContent)).filter(Boolean);
+  if(!lines.length){setStatus('재생할 일본어 문장을 찾지 못했습니다.');return;}
+  let i=0;setStatus('이야기 전체를 순서대로 재생합니다.');
+  function next(){if(token!==queueToken||i>=lines.length){if(token===queueToken)setStatus('전체 이야기 재생이 끝났습니다.');return;}
+   const u=new SpeechSynthesisUtterance(lines[i++]);u.lang='ja-JP';u.rate=0.82;const v=getVoice();if(v)u.voice=v;u.onend=next;u.onerror=()=>setStatus('음성 재생 중 오류가 발생했습니다.');synth.speak(u);}
+  next();
+ }
+ storySection.querySelectorAll('.sentence-audio').forEach(b=>b.addEventListener('click',()=>playOne(b)));
+ window.playWholeStory=playWholeStory;window.stopJapanese=stopJapanese;
+})();
 </script></body></html>
