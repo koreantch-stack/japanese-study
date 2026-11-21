@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ec"><title>EP.17 동네를 산책하며 길을 묻다 | Jay's Life in Japan</title>
+<style>
+:root{--bg:#f6f4ec;--paper:#fffefa;--ink:#24352c;--muted:#718076;--green:#477657;--line:#e3e5d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,-apple-system,"Noto Sans KR",sans-serif;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.wrap{max-width:850px;margin:28px auto;padding:0 16px}.top,.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:15px}.top{background:linear-gradient(120deg,#e7eee9,#f3e7d6)}
+.eyebrow{font-size:12px;letter-spacing:1px;color:var(--green);font-weight:800}.title{font-size:clamp(28px,5vw,40px);line-height:1.25;margin:8px 0}.muted,.ko{color:var(--muted)}.jp{font-size:19px;font-weight:650;line-height:1.95}.line{padding:14px 0;border-bottom:1px dashed var(--line)}.line:last-child{border:0}.ko{margin-top:8px}.step{font-size:21px;margin:0 0 12px}
+.table{width:100%;border-collapse:collapse}.table td,.table th{text-align:left;padding:9px 7px;border-bottom:1px solid var(--line)}.table th{font-size:12px;color:var(--muted)}
+.answer{filter:blur(5px);cursor:pointer;display:inline-block;user-select:none;background:#edf1e9;border-radius:6px;padding:1px 6px;transition:filter .18s}.answer.show{filter:none;user-select:text}.answer:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.note{background:#f8f1e3;border-radius:11px;padding:12px;color:#796744;font-size:13px;margin-top:12px}.btn{display:inline-block;background:var(--green);color:white;text-decoration:none;border-radius:10px;padding:10px 15px;font:inherit;font-weight:750}.btn.secondary{background:#e8eee7;color:var(--ink);border:1px solid var(--line)}
+.grammar{background:#f0f3e9;border-radius:13px;padding:14px;margin:10px 0}.example{border-top:1px solid #dfe6d9;padding-top:8px;margin-top:8px}.dialogue{padding:12px 0;border-bottom:1px solid var(--line)}.dialogue:last-child{border:0}
+.bottom-nav{position:fixed!important;display:flex!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;z-index:2147483000!important;width:100%!important;max-width:none!important;min-height:62px;justify-content:space-around;align-items:center;gap:2px;padding:7px 4px calc(7px + env(safe-area-inset-bottom));background:#fffefa!important;border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(36,53,44,.10)}
+.bottom-nav a{flex:1;min-width:0;text-align:center;text-decoration:none;color:var(--muted);font-size:11px;line-height:1.35;padding:3px 1px}.bottom-nav a span{display:block;font-size:19px;line-height:1.3;margin-bottom:2px}.bottom-nav a.current{color:var(--green);font-weight:850}
+@media(min-width:761px){.bottom-nav{max-width:850px!important;left:50%!important;right:auto!important;width:calc(100% - 32px)!important;transform:translateX(-50%)!important;border:1px solid var(--line);border-bottom:0;border-radius:16px 16px 0 0}}
+@media(max-width:600px){.wrap{margin:14px auto;padding:0 12px}.top,.card{padding:16px}.jp{font-size:18px}.table td,.table th{padding:8px 4px;font-size:14px}}
+.audio-tools{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.audio-btn{display:inline-block;border:0;background:var(--green);color:#fff;border-radius:10px;padding:10px 15px;font:inherit;font-weight:750;cursor:pointer}.audio-btn.secondary{background:#e8eee7;color:var(--ink);border:1px solid var(--line)}.audio-btn.small{padding:6px 10px;font-size:13px;margin:8px 0 2px}.audio-status{font-size:13px;color:var(--muted);margin:4px 0 10px}.sentence-audio.active{background:#b55a42;color:#fff}
+</style></head><body>
+<main class="wrap">
+<header class="top"><div class="eyebrow">JAY'S LIFE IN JAPAN · SEASON 1 · 2026.11.22</div><h1 class="title">EP.17. 동네를 산책하며 길을 묻다</h1><p class="muted">近所（きんじょ）を散歩（さんぽ）して、道（みち）を聞（き）く</p><p>편의점에서 소포를 보낸 뒤, Jay는 동네의 다른 골목도 걸어 보기로 합니다. 작은 공원 근처에서 역으로 돌아가는 길을 헷갈리고, 꽃에 물을 주던 주민에게 길을 묻습니다.</p><div class="note">JLPT N5 중심 · 약 35분 · 읽기·어휘·문법·회화·미션·쓰기 · 선택형 일본어 원문 음성 제공 · 듣기 시험 없음</div></header>
+<section class="card"><h2 class="step">STEP 1 · 이야기 읽기</h2><p class="muted">일본어 원문 아래의 흐린 한국어 직역을 누르면 뜻이 나타납니다. 이야기와 대화는 학습용 창작입니다.</p><div class="audio-tools"><button class="audio-btn" type="button" onclick="playWholeStory()">▶ 전체 듣기</button><button class="audio-btn secondary" type="button" onclick="stopJapanese()">■ 듣기 정지</button></div><p id="audioStatus" class="audio-status" aria-live="polite">일본어 원문 음성 선택 재생 · 듣기 시험 없음</p>
+<div class="line"><div class="jp">日曜日（にちようび）の午後（ごご）、荷物（にもつ）を送（おく）ってから、ジェイは近所（きんじょ）を少（すこ）し散歩（さんぽ）しました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="日曜日の午後、荷物を送ってから、ジェイは近所を少し散歩しました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">일요일 오후, 짐을 보내고 나서, Jay는 동네를 조금 산책했습니다.</div></div>
+<div class="line"><div class="jp">いつもと違（ちが）う道（みち）に、小（ちい）さな公園（こうえん）がありました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="いつもと違う道に、小さな公園がありました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">평소와 다른 길에, 작은 공원이 있었습니다.</div></div>
+<div class="line"><div class="jp">公園（こうえん）の近（ちか）くには、花（はな）に水（みず）をあげている人（ひと）がいました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="公園の近くには、花に水をあげている人がいました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">공원 가까이에는, 꽃에 물을 주고 있는 사람이 있었습니다.</div></div>
+<div class="line"><div class="jp">ジェイは駅（えき）へ行（い）きたかったですが、道（みち）がよく分（わ）かりませんでした。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="ジェイは駅へ行きたかったですが、道がよく分かりませんでした。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">Jay는 역에 가고 싶었지만, 길을 잘 알지 못했습니다.</div></div>
+<div class="line"><div class="jp">そこで、「すみません。駅（えき）はどこですか」と聞（き）きました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="そこで、すみません。駅はどこですか、と聞きました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그래서, “실례합니다. 역은 어디입니까?”라고 물었습니다.</div></div>
+<div class="line"><div class="jp">その人（ひと）は「この道（みち）をまっすぐ行（い）って、次（つぎ）の角（かど）を左（ひだり）に曲（ま）がってください」と言（い）いました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="その人は、この道をまっすぐ行って、次の角を左に曲がってください、と言いました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그 사람은 “이 길을 곧장 가고, 다음 모퉁이를 왼쪽으로 돌아 주세요”라고 말했습니다.</div></div>
+<div class="line"><div class="jp">ジェイは「まっすぐ行（い）って、左（ひだり）ですね」と、もう一度（いちど）聞（き）きました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="ジェイは、まっすぐ行って、左ですね、と、もう一度聞きました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">Jay는 “곧장 가고, 왼쪽이군요”라고, 한 번 더 물었습니다.</div></div>
+<div class="line"><div class="jp">その人（ひと）は「はい。駅（えき）はコンビニの近（ちか）くですよ」と答（こた）えました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="その人は、はい。駅はコンビニの近くですよ、と答えました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">그 사람은 “네. 역은 편의점 가까이예요”라고 대답했습니다.</div></div>
+<div class="line"><div class="jp">ジェイは教（おし）えてもらった道（みち）を歩（ある）いて、駅（えき）を見（み）つけました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="ジェイは教えてもらった道を歩いて、駅を見つけました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">Jay는 알려 받은 길을 걸어서, 역을 발견했습니다.</div></div>
+<div class="line"><div class="jp">「道（みち）を聞（き）いてよかったです」と思（おも）いながら、ジェイは家（いえ）へ帰（かえ）りました。</div><button class="audio-btn small secondary sentence-audio" type="button" data-voice="道を聞いてよかったです、と思いながら、ジェイは家へ帰りました。">🔊 문장 듣기</button><div class="ko answer" tabindex="0" role="button" aria-pressed="false">“길을 물어서 좋았습니다”라고 생각하면서, Jay는 집으로 돌아갔습니다.</div></div>
+</section>
+<section class="card"><h2 class="step">STEP 2 · 핵심 어휘 10개</h2><table class="table"><tr><th>일본어</th><th>읽기</th><th>뜻</th></tr>
+<tr><td>近所（きんじょ）</td><td>きんじょ</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">동네, 근처</span></td></tr>
+<tr><td>散歩（さんぽ）</td><td>さんぽ</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">산책</span></td></tr>
+<tr><td>道（みち）</td><td>みち</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">길</span></td></tr>
+<tr><td>公園（こうえん）</td><td>こうえん</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">공원</span></td></tr>
+<tr><td>花（はな）</td><td>はな</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">꽃</span></td></tr>
+<tr><td>水（みず）</td><td>みず</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">물</span></td></tr>
+<tr><td>駅（えき）</td><td>えき</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">역</span></td></tr>
+<tr><td>角（かど）</td><td>かど</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">모퉁이, 길모퉁이</span></td></tr>
+<tr><td>左（ひだり）</td><td>ひだり</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">왼쪽</span></td></tr>
+<tr><td>曲（ま）がる</td><td>まがる</td><td><span class="answer" tabindex="0" role="button" aria-pressed="false">돌다, 방향을 바꾸다</span></td></tr>
+</table></section>
+<section class="card"><h2 class="step">STEP 3 · 오늘의 문법 3개</h2>
+<div class="grammar"><b>① 동사 て형 + から · ~하고 나서</b><p>앞의 동작을 끝낸 뒤 다음 동작을 한다는 순서를 나타냅니다.</p><div class="example"><div class="jp">荷物（にもつ）を送（おく）ってから、散歩（さんぽ）しました。</div><div class="ko">짐을 보내고 나서, 산책했습니다.</div></div></div>
+<div class="grammar"><b>② 동사 て형 + ください · ~해 주세요</b><p>상대에게 정중하게 행동을 부탁하거나 길을 안내할 때 사용합니다.</p><div class="example"><div class="jp">この道（みち）をまっすぐ行（い）ってください。</div><div class="ko">이 길을 곧장 가 주세요.</div></div></div>
+<div class="grammar"><b>③ 문장 + ですね · ~이군요, ~네요</b><p>상대의 말을 듣고 확인하거나 동의할 때 사용합니다. 질문처럼 말끝을 올리면 확인하는 느낌이 더 분명해집니다.</p><div class="example"><div class="jp">まっすぐ行（い）って、左（ひだり）ですね。</div><div class="ko">곧장 가고, 왼쪽이군요.</div></div></div>
+</section>
+<section class="card"><h2 class="step">STEP 4 · 생활 회화</h2><p class="muted">일본어 길 안내에서 널리 쓰이는 기본 표현을 바탕으로 구성한 학습용 창작 대화입니다. 아래 대화 전체가 실제 특정 주민의 발언을 옮긴 것은 아닙니다.</p>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">すみません。駅（えき）はどこですか。</div><div class="ko">실례합니다. 역은 어디입니까?</div></div>
+<div class="dialogue"><b>近所（きんじょ）の人（ひと）：</b><div class="jp">この道（みち）をまっすぐ行（い）ってください。</div><div class="ko">이 길을 곧장 가 주세요.</div></div>
+<div class="dialogue"><b>近所（きんじょ）の人（ひと）：</b><div class="jp">次（つぎ）の角（かど）を左（ひだり）に曲（ま）がってください。</div><div class="ko">다음 모퉁이를 왼쪽으로 돌아 주세요.</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">まっすぐ行（い）って、左（ひだり）ですね。</div><div class="ko">곧장 가고, 왼쪽이군요.</div></div>
+<div class="dialogue"><b>近所（きんじょ）の人（ひと）：</b><div class="jp">はい。駅（えき）はコンビニの近（ちか）くですよ。</div><div class="ko">네. 역은 편의점 가까이예요.</div></div>
+<div class="dialogue"><b>ジェイ：</b><div class="jp">ありがとうございます。</div><div class="ko">감사합니다.</div></div>
+</section>
+<section class="card"><h2 class="step">STEP 5 · 일본에서 길을 물을 때</h2>
+<p><b>먼저 「すみません」으로 말을 건다.</b> 모르는 사람에게 길을 물을 때는 「すみません。駅はどこですか」처럼 짧게 목적지를 말하면 됩니다.</p>
+<p><b>방향은 한 단계씩 확인한다.</b> 「まっすぐ」「右」「左」와 「角」「信号」 같은 기준점을 함께 기억하면 안내를 따라가기 쉽습니다. 잘 못 들었을 때는 「もう一度お願いします」라고 다시 말해 달라고 부탁할 수 있습니다.</p>
+<p><b>들은 내용을 짧게 되풀이한다.</b> 「まっすぐ行って、左ですね」처럼 핵심 방향을 되짚으면 서로 이해했는지 확인하는 데 도움이 됩니다.</p>
+<div class="note">표현 확인 참고: <a href="https://nihongojikan.jp/blog/20260829-4479/" target="_blank" rel="noopener">日本語で道案内してみましょう</a>, <a href="https://nihongo.coffeebreakagain.com/ja/directions/" target="_blank" rel="noopener">道を尋ねる日本語</a>. 실제 길 안내는 지역과 상황에 따라 달라질 수 있습니다.</div>
+</section>
+<section class="card"><h2 class="step">STEP 6 · 상황 선택 미션</h2>
+<p><b>미션 1.</b> 처음 만난 사람에게 “실례합니다. 역은 어디입니까?”라고 묻는 표현은?</p><div class="grammar"><p>A. 駅（えき）はどこですか。</p><p>B. 駅（えき）を食（た）べますか。</p><p>C. 駅（えき）へ帰（かえ）りました。</p><p class="answer" tabindex="0" role="button" aria-pressed="false">정답: A · 장소를 물을 때는 「～はどこですか」를 사용합니다.</p></div>
+<p><b>미션 2.</b> “다음 모퉁이를 왼쪽으로 돌아 주세요”는?</p><div class="grammar"><p>A. 次（つぎ）の角（かど）を右（みぎ）に曲（ま）がってください。</p><p>B. 次（つぎ）の角（かど）を左（ひだり）に曲（ま）がってください。</p><p>C. 次（つぎ）の角（かど）で食（た）べてください。</p><p class="answer" tabindex="0" role="button" aria-pressed="false">정답: B · 左는 왼쪽, 曲がってください는 돌아 주세요입니다.</p></div>
+<p><b>미션 3.</b> 상대가 말한 방향을 “곧장 가고, 왼쪽이군요”라고 확인하려면?</p><div class="grammar"><p>A. まっすぐ行（い）って、左（ひだり）ですね。</p><p>B. まっすぐ食（た）べて、左（ひだり）ですね。</p><p>C. まっすぐ行（い）きたいです。</p><p class="answer" tabindex="0" role="button" aria-pressed="false">정답: A · ですね로 들은 내용을 확인할 수 있습니다.</p></div>
+</section>
+<section class="card"><h2 class="step">STEP 7 · 직접 문장 만들기</h2>
+<div class="line"><b>1. 이 길을 곧장 가 주세요.</b><p class="answer" tabindex="0" role="button" aria-pressed="false">この道（みち）をまっすぐ行（い）ってください。</p><div class="ko">行（い）く의 て형은 行（い）って입니다.</div></div>
+<div class="line"><b>2. 다음 모퉁이를 오른쪽으로 돌아 주세요.</b><p class="answer" tabindex="0" role="button" aria-pressed="false">次（つぎ）の角（かど）を右（みぎ）に曲（ま）がってください。</p><div class="ko">右는 오른쪽, 曲がってください는 돌아 주세요입니다.</div></div>
+<div class="line"><b>3. 길을 물어보고 나서 역을 찾았습니다.</b><p class="answer" tabindex="0" role="button" aria-pressed="false">道（みち）を聞（き）いてから、駅（えき）を見（み）つけました。</p><div class="ko">聞（き）く의 て형 聞（き）いて에 から를 붙여 순서를 나타냅니다.</div></div>
+</section>
+<section class="card"><h2 class="step">STEP 8 · 오늘의 학습 체크</h2><p class="muted">총 35분 · 읽기·어휘·문법·회화·쓰기 중심</p>
+<div class="line"><label><input type="checkbox"> 이야기 10문장 읽고 직역 확인 · 8분</label></div><div class="line"><label><input type="checkbox"> 핵심 어휘 10개 익히기 · 7분</label></div><div class="line"><label><input type="checkbox"> 문법 3개와 예문 따라 쓰기 · 9분</label></div><div class="line"><label><input type="checkbox"> 길 묻기 회화와 방향 표현 익히기 · 5분</label></div><div class="line"><label><input type="checkbox"> 상황 미션과 작문 3문제 풀기 · 6분</label></div>
+</section>
+<section class="card"><h2 class="step">다음 이야기 · EP.18</h2><b>갑자기 비가 내린 날</b><p class="muted">동네 길을 조금씩 익히기 시작한 Jay. 외출 중 갑자기 비가 내리고, 가까운 가게에서 우산을 고르게 됩니다.</p><a class="btn" href="index.html?tab=jay">Jay 연재 목록</a> <a class="btn secondary" href="jay-ep16.html">EP.16 다시 보기</a></section>
+</main>
+<nav class="bottom-nav" aria-label="주요 메뉴"><a href="index.html?tab=home"><span>⌂</span>홈</a><a href="index.html?tab=jay" class="current" aria-current="page"><span>✦</span>Jay</a><a href="index.html?tab=lesson"><span>▤</span>학습</a><a href="index.html?tab=archive"><span>▦</span>챕터</a><a href="index.html?tab=vocab"><span>◇</span>단어장</a><a href="index.html?tab=review"><span>↻</span>복습</a></nav>
+<script>
+function toggleAnswer(el){const visible=el.classList.toggle('show');el.setAttribute('aria-pressed',String(visible));el.title=visible?'다시 눌러 가리기':'눌러서 뜻 또는 정답 보기'}
+document.querySelectorAll('.answer').forEach(el=>{el.addEventListener('click',()=>toggleAnswer(el));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleAnswer(el)}})});
+(function(){
+ const root=[...document.querySelectorAll('section.card')].find(s=>s.querySelector('.step')?.textContent.includes('STEP 1'));if(!root)return;
+ const synth=window.speechSynthesis,status=document.getElementById('audioStatus');let current=null,token=0;
+ const supported=!!synth&&typeof window.SpeechSynthesisUtterance==='function';
+ function clean(t){return(t||'').replace(/（[ぁ-ゖァ-ヺー]+）/g,'').replace(/\s+/g,' ').trim()}
+ function voice(){const a=synth.getVoices();return a.find(v=>/^ja(-|_)?jp$/i.test(v.lang))||a.find(v=>/^ja/i.test(v.lang))||null}
+ function reset(){if(current){current.classList.remove('active');current.textContent='🔊 문장 듣기';current=null}}
+ function stopJapanese(){token++;if(supported){synth.cancel();synth.resume()}reset();if(status)status.textContent='재생을 정지했습니다.'}
+ function speak(text,onend,onerror){const u=new SpeechSynthesisUtterance(clean(text));u.lang='ja-JP';u.rate=.82;const v=voice();if(v)u.voice=v;u.onend=()=>onend&&onend();u.onerror=e=>onerror&&onerror(e);synth.resume();window.setTimeout(()=>{try{synth.speak(u)}catch(e){onerror&&onerror(e)}},100)}
+ function unavailable(){if(status)status.textContent='이 환경에서 음성 읽기를 사용할 수 없습니다. Chrome에서 열고 Android 일본어 음성 데이터를 확인해 주세요.'}
+ function playOne(b){if(!supported){unavailable();return}if(current===b&&synth.speaking){stopJapanese();return}token++;const t=token;synth.cancel();synth.resume();reset();current=b;b.classList.add('active');b.textContent='■ 재생 중 · 정지';status.textContent='일본어 문장을 재생합니다.';speak(b.dataset.voice,()=>{if(t===token){reset();status.textContent='문장 재생이 끝났습니다.'}},()=>{if(t===token){reset();status.textContent='재생 오류. Chrome 또는 Android의 일본어 TTS 음성 설정을 확인해 주세요.'}})}
+ function playWholeStory(){if(!supported){unavailable();return}stopJapanese();const t=token,lines=[...root.querySelectorAll('.line .jp')].map(x=>clean(x.textContent)).filter(Boolean);let i=0;status.textContent='이야기 전체를 순서대로 재생합니다.';function next(){if(t!==token)return;if(i>=lines.length){status.textContent='전체 이야기 재생이 끝났습니다.';return}speak(lines[i++],next,()=>{if(t===token)status.textContent='재생 오류. 일본어 TTS 음성 설정을 확인해 주세요.'})}next()}
+ root.querySelectorAll('.sentence-audio').forEach(b=>b.addEventListener('click',()=>playOne(b)));window.playWholeStory=playWholeStory;window.stopJapanese=stopJapanese;
+ if(supported)synth.addEventListener?.('voiceschanged',()=>{const v=voice();if(v&&status)status.textContent='일본어 음성 준비 완료 · '+v.name});
+})();
+</script></body></html>
